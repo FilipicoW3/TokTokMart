@@ -24,4 +24,8 @@ All 335 editor assertions passed. The legacy scoring capture was updated to exer
 
 `Shifts/shift-playthroughs.txt` records complete shifts 1, 5, 10 and 20 with real-time customers, partner AI, chaos, task timing and closing deadlines. The input replay uses normal navigation and finishes any mop task before collecting/delivering stock. Required task totals increase from 5 to 9, 14 and 24. Each shift passed.
 
-Packaged Windows captures and gameplay reports are in `Standalone-Desktop` and `Standalone-Phone`. The phone-sized run is a desktop aspect-ratio/input check. Physical Android gameplay and vibration testing remain pending.
+Packaged Windows captures and gameplay reports are in `Standalone-Desktop` (1600×900) and `Standalone-Phone` (1740×820). Both passed all 131 gameplay checks with exit code 0. The phone-sized run is a desktop aspect-ratio/input check.
+
+The Android APK built with zero errors: package `com.toktokmart.demo`, version 0.5.1/code 6, API 26–35, ARM64. Signature verification and 16 KB alignment checks passed; its signer matches 0.5.0 and VIBRATE permission is present. Actual APK size is 52,004,071 bytes. The build report's larger total includes intermediate/debug output that is excluded from the release. Windows ZIP size is 64,207,871 bytes, with debug-only folders excluded. Package reports and hashes are in `../Builds/0.5.1` and the release checksum file.
+
+No Android device was connected. Physical Android gameplay and vibration testing remain pending.
