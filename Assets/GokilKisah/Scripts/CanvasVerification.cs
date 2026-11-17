@@ -19,6 +19,36 @@ namespace GokilKisah
             var savedFont=authoredText.font;authoredText.font=null;
             yield return null;yield return new WaitForEndOfFrame();
             check(authoredText.font==null,"Binding pass preserves a manually assigned font");authoredText.font=savedFont;
+            var fade=editableUI.GetComponentInChildren<TokMartHorizontalFade>(true);
+            check(fade,"Menu fade is authored");
+            if(fade)
+            {
+                var binding=fade.GetComponent<TokMartCanvasElement>();bool savedHidden=binding.hideFromGame;
+                binding.hideFromGame=true;yield return null;yield return new WaitForEndOfFrame();
+                check(!binding.gameObject.activeSelf,"Hide From Game survives the runtime binding pass");
+                binding.hideFromGame=false;yield return null;yield return new WaitForEndOfFrame();
+                check(binding.gameObject.activeInHierarchy,"Hidden menu fill can be restored");
+                using(var mesh=new VertexHelper())
+                {
+                    var rect=fade.GetComponent<RectTransform>().rect;var v=UIVertex.simpleVert;v.color=Color.white;
+                    v.position=new Vector3(rect.xMin,rect.yMin,0);mesh.AddVert(v);
+                    v.position=new Vector3(rect.xMax,rect.yMin,0);mesh.AddVert(v);
+                    fade.ModifyMesh(mesh);mesh.PopulateUIVertex(ref v,0);int left=v.color.a;mesh.PopulateUIVertex(ref v,1);
+                    check(left==255&&v.color.a==0,"Menu fade goes from 100 percent left to zero right");
+                }
+                binding.hideFromGame=savedHidden;
+            }
+            settingsOpen=true;settingsTab=5;yield return null;yield return new WaitForEndOfFrame();
+            Text credit=null;
+            foreach(var e in editableUI.GetComponentsInChildren<TokMartCanvasElement>(true))
+                if(e.key=="DrawSettings5_0/StoreInterface_23246_0/Label_0")credit=e.GetComponent<Text>();
+            check(credit&&!credit.GetComponent<TokMartCanvasElement>().bindGameData,"Credits use authored text");
+            if(credit)
+            {
+                string savedCredit=credit.text;credit.text="Authoring check";yield return null;yield return new WaitForEndOfFrame();
+                check(credit.text=="Authoring check","Custom credits survive the runtime binding pass");credit.text=savedCredit;
+            }
+            settingsOpen=false;settingsTab=0;yield return null;
             yield return CanvasPair(folder,"01-Menu");
             Button FindButton(string label)
             {

@@ -1,5 +1,21 @@
 # Manually editing TokTokMart UI
 
+## Quick start: UI Layout Editor
+
+1. Open `Assets/GokilKisah/Scenes/TokMartPitch.unity` and stop Play mode.
+2. Choose **TokTokMart > UI > Open UI Layout Editor**. The window stays open when you select other UI objects.
+3. Click a screen preview, such as **Main Menu**, **Shift Briefing**, **Shift Results**, or **Credits**. Use the **Scene** tab to edit, or the **Game** tab to see its screen appearance without starting Play.
+4. Expand **TokMartEditableUI > Design (1600 x 900)** and select the object or whole button group. Press **T** for the Rect tool. Drag to position/resize, or enter precise **Pos X / Pos Y / Width / Height** in its Rect Transform. Resize a composite button using the parent group's Scale so artwork, label and hit area move together.
+5. Save with **Ctrl+S**. Press the Unity **Play** button to test. Stop Play before making permanent adjustments. The separate Windows demo is an older compiled copy; it will not reflect these editor changes.
+
+The menu's existing solid fill now has a **Tok Mart Horizontal Fade** component. Its black alpha goes from **Left Opacity = 1** to **Right Opacity = 0** across the existing 630-pixel rectangle. Use **Select Fill - Position / Size / Color** in the layout editor to adjust its Rect Transform or Raw Image color. **Hide menu fill** removes it from previews and play. For any other decorative element or group, enable **Hide From Game** on its Tok Mart Canvas Element. The normal GameObject active checkbox is managed by gameplay and is not a persistent hide setting. You may delete decorative bindings permanently, but restoring them requires the archive and missing-binding warnings can result; hiding is reversible and keeps binding keys valid.
+
+The layout editor includes **Credits text** fields for the heading, names/roles/sources, and footer. These edit the actual authored Text components, with game-data binding disabled for those three labels. Press **Preview Credits** to inspect the result and save the scene. Font, size, placement, and color remain editable in the normal Inspector. Existing attribution text is retained until you replace it.
+
+Obsolete screen groups from older UI revisions are archived in `UI-Backups/Before-UI-Workspace-20261117`. This contains the full original prefab, the on-disk scene, and a separate snapshot including the previously unsaved editor changes. The active Canvas contains current screens. Existing authored placement and sizing are preserved. No Windows or Android player build is part of this update.
+
+The attached shift-screen mockup is a visual reference only; the live briefing data and existing authored layout are retained for testing.
+
 The active scene now uses the TokMartEditableUI Canvas prefab in Assets/GokilKisah/Resources. The original IMGUI drawing code is retained as a fallback; the editable Canvas is the default screen renderer. Existing gameplay actions remain connected through a binding layer. World-space shop labels stay with the world renderer.
 
 ## Edit a screen

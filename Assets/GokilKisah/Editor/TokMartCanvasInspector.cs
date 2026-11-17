@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
 namespace GokilKisah.Editor
 {
     [CustomEditor(typeof(TokMartCanvas))]
@@ -8,26 +7,16 @@ namespace GokilKisah.Editor
     {
         public override void OnInspectorGUI()
         {
-            DrawDefaultInspector();var ui=(TokMartCanvas)target;
-            EditorGUILayout.HelpBox("Edit outside Play Mode. Expand Design, preview a screen below, then move groups with the Rect tool. Edit Text, Image and RawImage components directly. Game counters still update during play.",MessageType.Info);
-            if(Application.isPlaying)return;
-            if(!ui.designRoot)return;
-            EditorGUILayout.LabelField("Preview one screen",EditorStyles.boldLabel);
-            var names=new[]{"Main menu","Choose a level","Scoring rules","Shift targets and star requirements","Shift score and stars","Shift HUD"};
-            var screens=ui.GetComponentsInChildren<TokMartCanvasElement>(true).Where(e=>e.kind=="Group"&&(names.Contains(e.name)||e.transform.parent==ui.designRoot&&e.key.StartsWith("Draw"))).ToArray();
-            foreach(var screen in screens)
+            var ui=(TokMartCanvas)target;
+            EditorGUILayout.HelpBox("Stop Play mode before editing. Open the layout editor to preview screens, select the menu fade and edit credits. Use the Rect tool (T) and Rect Transform for placement and size. Hide From Game keeps an element hidden during play.",MessageType.Info);
+            if(GUILayout.Button("Open UI Layout Editor"))TokMartUIWorkspace.Open(ui);
+            if(!Application.isPlaying)
             {
-                string name=screen.name;
-                if(screen.key.StartsWith("DrawSettings"))name+=" - "+new[]{"Audio","Display","Gameplay","Pitch tools","Controls","Credits"}[Mathf.Clamp(int.Parse(screen.key.Substring("DrawSettings".Length,1)),0,5)];
-                if(GUILayout.Button(name))
-                {
-                    Undo.RegisterFullObjectHierarchyUndo(ui.gameObject,"Preview UI screen");
-                    foreach(var e in ui.GetComponentsInChildren<TokMartCanvasElement>(true))e.gameObject.SetActive(false);
-                    foreach(var e in screen.GetComponentsInChildren<TokMartCanvasElement>(true))e.gameObject.SetActive(true);
-                    for(var ancestor=screen.transform;ancestor&&ancestor!=ui.designRoot;ancestor=ancestor.parent)ancestor.gameObject.SetActive(true);
-                    Selection.activeGameObject=screen.gameObject;SceneView.lastActiveSceneView?.FrameSelected();EditorUtility.SetDirty(ui);
-                }
+                if(GUILayout.Button("Preview Main Menu"))TokMartUIWorkspace.Preview(ui,"ArtMenu_0");
+                if(GUILayout.Button("Preview Shift Briefing"))TokMartUIWorkspace.Preview(ui,"ShiftBrief_0");
+                if(GUILayout.Button("Preview Credits"))TokMartUIWorkspace.Preview(ui,"DrawSettings5_0");
             }
+            DrawDefaultInspector();
         }
     }
 }

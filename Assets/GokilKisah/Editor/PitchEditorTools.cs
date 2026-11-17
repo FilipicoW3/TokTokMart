@@ -29,6 +29,7 @@ namespace GokilKisah.Editor
             {
                 switch(command.action)
                 {
+                    case "uiworkspace":TokMartUIWorkspace.Prepare();ReplyTo(command.action,"UI workspace prepared; no player build");break;
                     case "spillrepro":GameplayRefreshTools.ReproduceSpills(command.path);ReplyTo(command.action,"Spill reproduction recorded");break;
                     case "cleantestevents":GameplayRefreshTools.CleanTemporaryEventSystems(command.path);ReplyTo(command.action,"Temporary UI event systems checked");break;
                     case "gameplayrefreshverify":RequireGame().BeginGameplayRefreshVerification(command.path);ReplyTo(command.action,"Spill, progression and active-boss checks started");break;

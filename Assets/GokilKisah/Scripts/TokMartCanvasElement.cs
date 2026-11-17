@@ -19,6 +19,8 @@ namespace GokilKisah
         public bool bindGameData=true;
         [Tooltip("Keep enabled for progress bars and moving task markers. Static layouts remain where you place them.")]
         public bool animateLayout=true;
+        [Tooltip("Hide this element or whole group in previews and during play. Use this instead of the GameObject checkbox, which gameplay controls.")]
+        public bool hideFromGame;
         [System.NonSerialized] public TokMartCanvas owner;
         RectTransform rt;Vector2 authoredPosition,authoredSize;bool captured;
         public void Layout(Rect source)

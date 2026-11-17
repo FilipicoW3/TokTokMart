@@ -41,7 +41,7 @@ namespace GokilKisah
         }
         void EnsureEvents(){if(!EventSystem.current&&!FindFirstObjectByType<EventSystem>(FindObjectsInactive.Include)){var go=new GameObject("UI EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));go.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();}}
         public void Begin(Matrix4x4 matrix){if(elements.Count==0)Index();sourceMatrix=matrix;seen.Clear();counts.Clear();parents.Clear();parents.Push(designRoot);building=true;}
-        public void End(){foreach(var e in elements.Values)if(e)e.gameObject.SetActive(seen.Contains(e));building=false;}
+        public void End(){foreach(var e in elements.Values)if(e)e.gameObject.SetActive(!e.hideFromGame&&seen.Contains(e));building=false;}
         bool CanAuthor {
             get {
 #if UNITY_EDITOR
@@ -67,7 +67,7 @@ namespace GokilKisah
                 var r=e.GetComponent<RectTransform>();r.anchorMin=new Vector2(0,1);r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);r.sizeDelta=new Vector2(1600,900);
                 elements[key]=e;
             }
-            e.gameObject.SetActive(true);if(CanAuthor)e.transform.SetAsLastSibling();seen.Add(e);return e;
+            e.gameObject.SetActive(!e.hideFromGame);if(CanAuthor)e.transform.SetAsLastSibling();seen.Add(e);return e;
         }
         public IDisposable Scope(string id,string title)
         {

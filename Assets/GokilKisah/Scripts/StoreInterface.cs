@@ -331,7 +331,7 @@ namespace GokilKisah
             else
             {
                 Text(new Rect(641,235,650,45),"Art & audio credits",30,ink,FontStyle.Bold, uiKey:"StoreInterface_23154");
-                Text(new Rect(641,306,650,300),"TokTokMart art & walk animations\nSupplied project artist exports · November 2026\nAdditional props: Kenney · CC0\n\nSound effects\nKenney Vleugels · Kenney.nl · CC0\n\nShop Theme / Buy something!\nCleyton Kauffman · OpenGameArt.org · CC0\n\nLato / Lilita One\nŁukasz Dziedzic / Juan Montoreano · SIL OFL",23,new Color(.25f,.38f,.34f), uiKey:"StoreInterface_23246");
+                Text(new Rect(641,306,650,300),"TokTokMart art & walk animations\nSupplied project artist exports · November 2026\nAdditional props: Kenney · CC0\n\nSound effects\nKenney Vleugels · Kenney.nl · CC0\n\nShop Theme / Buy something!\nCleyton Kauffman · OpenGameArt.org · CC0\n\nBigbesty\nKhurasan · supplied project font",23,new Color(.25f,.38f,.34f), uiKey:"StoreInterface_23246");
                 Text(new Rect(641,650,650,60),"Gokil Kisah mechanics follow the supplied design document. Sam, Zack and Toyol use supplied project artwork.",19,new Color(.30f,.41f,.39f), uiKey:"StoreInterface_23631");
             }
             if(Button(new Rect(267,730,290,44),"Main menu",surface,19, uiKey:"StoreInterface_23832"))ReturnToMainMenu();
