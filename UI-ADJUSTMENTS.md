@@ -37,3 +37,9 @@ The compatibility presentation pass still supplies gameplay state, button action
 Buttons animate their authored group through `TokMartButtonMotion`. Move the whole group when adjusting placement so the art, label and hit area remain together. Result stars use `TokMartStarBurst`; its delay controls the stagger, and its spark objects remain editable children of the star.
 
 The release authoring helper captures and restores existing rectangles before saving. Animated layout values must not become the next authored baseline, or control sizes and positions will drift on later play sessions.
+
+## TextMesh Pro labels
+
+The existing bindings accept both Unity UI Text and TextMesh Pro labels. To convert a label, keep its GameObject, RectTransform and Tok Mart Canvas Element; replace its Text component with TextMeshProUGUI in the Editor. Choose the TMP font and turn off its Raycast Target for a decorative label. Counters, feedback colors and changing sizes keep their existing binding keys; the presenter preserves the assigned TMP font. Disable Bind Game Data for fixed designer text.
+
+Commit the edited scene or Canvas prefab and its metadata with UI changes. Adding TMP fonts or restoring older script filenames alone does not include an edited screen. Canonical runtime files remain CanvasUIBinding, GameArtLibrary, CampaignScoring and MainMenuAndHudUI; historical utilities stay under Tools/Legacy.
