@@ -53,12 +53,15 @@ namespace GokilKisah
         }
         void PlaySound(string key,float gain=1)
         {
+            if(key=="Mop"||key=="Stock"||key=="Scan")MobileHaptics.Pulse(18);
+            else if(key=="Miss"||key=="Impact")MobileHaptics.Pulse(55);
             if(!effectsSource||!sounds.TryGetValue(key,out var clip))return;
             effectsSource.PlayOneShot(clip,Mathf.Clamp01(gain));
             if(recordingSounds)captureSounds.Add(new AudioEvent{frame=recordingFrame,sound=key,gain=gain});
         }
         void ApplyAudio()
         {
+            if(editableUI&&editableUI.starAudio)editableUI.starAudio.volume=masterVolume*effectsVolume;
             if(musicSource)musicSource.volume=masterVolume*musicVolume;
             if(effectsSource)effectsSource.volume=masterVolume*effectsVolume;
         }
@@ -160,7 +163,7 @@ namespace GokilKisah
             var canvas=GUI.matrix;GUI.matrix=SceneOverlayMatrix();drawingWorldOverlay=true;
             DrawStore();drawingWorldOverlay=false;GUI.matrix=canvas;
             GUI.enabled=!settingsOpen;
-            if(selected)DrawNovemberHud();
+            if(selected&&!shiftBriefOpen)DrawNovemberHud();
             GUI.enabled=!settingsOpen&&!replay;
             if(showTouchControls&&selected&&!settingsOpen&&!gameOver&&!shiftBriefOpen&&skillType<0&&!scoreGuideOpen)DrawMobileControls();
             GUI.enabled=true;
@@ -307,22 +310,19 @@ namespace GokilKisah
             }
             else if(settingsTab==2)
             {
+                bool vibration=MobileHaptics.Enabled;ToggleRow(539,"Vibration","Mobile feedback for taps, tasks and stars.",ref vibration,uiKey:"MobileVibration");if(vibration!=MobileHaptics.Enabled){MobileHaptics.Enabled=vibration;if(vibration)MobileHaptics.Pulse(35);}
                 ToggleRow(236,"Touch controls","Joystick + hold Sprint + tap Interact. Customize in Controls.",ref showTouchControls, uiKey:"StoreInterface_20732");
                 ToggleRow(337,"Character names","Show name tags over characters.",ref showNames, uiKey:"StoreInterface_20867");
                 ToggleRow(438,"Pause when unfocused","Freeze the shift when you switch windows.",ref pauseOnFocusLoss, uiKey:"StoreInterface_20965");
                 if(campaignActive)
                 {
-                    Text(new Rect(641,542,650,42),"Level "+CurrentLevel+" · "+ServeGoal+" customers / "+StockGoal+" shelves / "+CleanGoal+" spills",21,ink,FontStyle.Bold, uiKey:"StoreInterface_21142");
-                    Text(new Rect(641,596,650,65),"A boss arrives every five levels. Defeated bosses can return at random.",21,new Color(.30f,.41f,.39f), uiKey:"StoreInterface_21314");
-                    if(Button(new Rect(641,717,690,44),"Restart level "+CurrentLevel,gold,19, uiKey:"StoreInterface_21472")){SetSettingsOpen(false);BeginCampaignLevel(CurrentLevel,campaignPersistence);}
+                    Text(new Rect(641,646,650,40),"SHIFT "+CurrentLevel+"  /  "+Targets.Title,22,ink,FontStyle.Bold,uiKey:"ShiftType");
+                    if(Button(new Rect(641,717,690,44),"Restart level "+CurrentLevel,gold,19,uiKey:"StoreInterface_21472")){SetSettingsOpen(false);BeginCampaignLevel(CurrentLevel,campaignPersistence);}
                 }
                 else
                 {
-                    Text(new Rect(641,542,650,42),"Choose an encounter",23,ink,FontStyle.Bold, uiKey:"StoreInterface_21699");
-                    GUI.enabled=!replay;
-                    for(int i=0;i<5;i++)if(Button(new Rect(641+(i%3)*229,587+(i/3)*57,215,46),scenarioTitles[i],encounter==(Encounter)i?mint:new Color(.84f,.88f,.81f),18, uiKey:"StoreInterface_21859")){ResetRun((Encounter)i);SetSettingsOpen(false);}
-                    GUI.enabled=true;
-                    if(Button(new Rect(641,717,690,44),"Restart this encounter",gold,19, uiKey:"StoreInterface_22097")){StopReplay();SetSettingsOpen(false);}
+                    Text(new Rect(641,646,650,40),"Try guided scenarios in Pitch tools.",22,ink,uiKey:"PracticeHint");
+                    if(Button(new Rect(641,717,690,44),"Restart this encounter",gold,19,uiKey:"StoreInterface_22097")){StopReplay();SetSettingsOpen(false);}
                 }
             }
             else if(settingsTab==3)

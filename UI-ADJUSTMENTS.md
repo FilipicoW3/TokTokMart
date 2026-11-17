@@ -31,3 +31,9 @@ Normal play does not create Canvas objects, controls or missing UI components. A
 Manually selected fonts are preserved. Existing static text, images, colors, positions and sibling order remain authored; live counters and animations continue through their binding components. Disable **Bind Game Data** for a fixed custom visual and **Animate Layout** for a fixed placement. Do not rename hidden binding keys. You can rename visible GameObject names and move a whole control group. Reparenting bound elements requires updating the binding design.
 
 The compatibility presentation pass still supplies gameplay state, button actions and animated values. It is not a fully separate presenter architecture yet. World labels remain drawn by the world renderer. Historical screen generation is an explicit Editor migration only, not part of normal play or the design workflow.
+
+## Button and star motion
+
+Buttons animate their authored group through `TokMartButtonMotion`. Move the whole group when adjusting placement so the art, label and hit area remain together. Result stars use `TokMartStarBurst`; its delay controls the stagger, and its spark objects remain editable children of the star.
+
+The release authoring helper captures and restores existing rectangles before saving. Animated layout values must not become the next authored baseline, or control sizes and positions will drift on later play sessions.

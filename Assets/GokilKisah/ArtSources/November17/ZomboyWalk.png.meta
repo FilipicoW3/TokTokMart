@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: 034deac66b114544c8e802f83b85485c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8967796470492753598
+    second: ZomboyWalk_0
+  - first:
+      213: 3210347465409379958
+    second: ZomboyWalk_1
+  - first:
+      213: 5676899973601397165
+    second: ZomboyWalk_2
+  - first:
+      213: 5529480672802652833
+    second: ZomboyWalk_3
+  - first:
+      213: -8250673933971690725
+    second: ZomboyWalk_4
+  - first:
+      213: 3343135864517550636
+    second: ZomboyWalk_5
+  - first:
+      213: -5678496061338272361
+    second: ZomboyWalk_6
+  - first:
+      213: 6652310578743566955
+    second: ZomboyWalk_7
+  - first:
+      213: 7422430779215298721
+    second: ZomboyWalk_8
+  - first:
+      213: 1966612666572904979
+    second: ZomboyWalk_9
+  - first:
+      213: 6637590540396604742
+    second: ZomboyWalk_10
+  - first:
+      213: 7086121908486232126
+    second: ZomboyWalk_11
+  - first:
+      213: 8905892778422789337
+    second: ZomboyWalk_12
+  - first:
+      213: 6166881232369380654
+    second: ZomboyWalk_13
+  - first:
+      213: -4840404274628451912
+    second: ZomboyWalk_14
+  - first:
+      213: -7412711243137432250
+    second: ZomboyWalk_15
+  - first:
+      213: -984596648096943317
+    second: ZomboyWalk_16
+  - first:
+      213: 1936176242518191235
+    second: ZomboyWalk_17
+  - first:
+      213: -8922017036902662177
+    second: ZomboyWalk_18
+  - first:
+      213: -2425114378714544023
+    second: ZomboyWalk_19
+  - first:
+      213: -5990772010232067114
+    second: ZomboyWalk_20
+  - first:
+      213: 7585415102390382090
+    second: ZomboyWalk_21
+  - first:
+      213: 6555126467155772976
+    second: ZomboyWalk_22
+  - first:
+      213: -169510497164259983
+    second: ZomboyWalk_23
+  - first:
+      213: -4069746635481319868
+    second: ZomboyWalk_24
+  - first:
+      213: -580113419395017634
+    second: ZomboyWalk_25
+  - first:
+      213: 4053051696879404360
+    second: ZomboyWalk_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ZomboyWalk_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 1027
+        width: 132
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebee8b16063047c70800000000000000
+      internalID: 8967796470492753598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_1
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 1027
+        width: 133
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67e3d49b2027d8c20800000000000000
+      internalID: 3210347465409379958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1027
+        width: 134
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da98fefc27668ce40800000000000000
+      internalID: 5676899973601397165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_3
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 1027
+        width: 134
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a24ace1069acbc40800000000000000
+      internalID: 5529480672802652833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_4
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1027
+        width: 134
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1bea0065c7bf7d80800000000000000
+      internalID: -8250673933971690725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_5
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 1031
+        width: 133
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c22ef682b54356e20800000000000000
+      internalID: 3343135864517550636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_6
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 777
+        width: 131
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d3a7d0bede131b0800000000000000
+      internalID: -5678496061338272361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_7
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 779
+        width: 130
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b626595d931c15c50800000000000000
+      internalID: 6652310578743566955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_8
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 779
+        width: 130
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a0cd0dc775c10760800000000000000
+      internalID: 7422430779215298721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_9
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 778
+        width: 131
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31a9cd9fccfca4b10800000000000000
+      internalID: 1966612666572904979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_10
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 777
+        width: 131
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d25d4dd657d1c50800000000000000
+      internalID: 6637590540396604742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_11
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 776
+        width: 132
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e385f66f456f65260800000000000000
+      internalID: 7086121908486232126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_12
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 519
+        width: 132
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d46b99eb46189b70800000000000000
+      internalID: 8905892778422789337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_13
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 519
+        width: 133
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2d666baec9259550800000000000000
+      internalID: 6166881232369380654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_14
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 518
+        width: 133
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b12d7135fd63dcb0800000000000000
+      internalID: -4840404274628451912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_15
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 517
+        width: 134
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 645cf3a0662c02990800000000000000
+      internalID: -7412711243137432250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_16
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 515
+        width: 134
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b23342fa0920652f0800000000000000
+      internalID: -984596648096943317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_17
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 515
+        width: 134
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38ce8d5c80eaeda10800000000000000
+      internalID: 1936176242518191235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 259
+        width: 134
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdffe6b96c0ae2480800000000000000
+      internalID: -8922017036902662177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_19
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 259
+        width: 133
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96807054253485ed0800000000000000
+      internalID: -2425114378714544023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_20
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 259
+        width: 133
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbc3cfd8908cdca0800000000000000
+      internalID: -5990772010232067114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_21
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 259
+        width: 132
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0eacdba8dec44960800000000000000
+      internalID: 7585415102390382090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_22
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 259
+        width: 132
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 036c4949acc78fa50800000000000000
+      internalID: 6555126467155772976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_23
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 259
+        width: 132
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17d03d6d917c5adf0800000000000000
+      internalID: -169510497164259983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_24
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 3
+        width: 132
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4467b4a5ffa5587c0800000000000000
+      internalID: -4069746635481319868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_25
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 3
+        width: 132
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54d58b2be503f7f0800000000000000
+      internalID: -580113419395017634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyWalk_26
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 3
+        width: 132
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8458ac85b055f3830800000000000000
+      internalID: 4053051696879404360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ZomboyWalk_0: 8967796470492753598
+      ZomboyWalk_1: 3210347465409379958
+      ZomboyWalk_10: 6637590540396604742
+      ZomboyWalk_11: 7086121908486232126
+      ZomboyWalk_12: 8905892778422789337
+      ZomboyWalk_13: 6166881232369380654
+      ZomboyWalk_14: -4840404274628451912
+      ZomboyWalk_15: -7412711243137432250
+      ZomboyWalk_16: -984596648096943317
+      ZomboyWalk_17: 1936176242518191235
+      ZomboyWalk_18: -8922017036902662177
+      ZomboyWalk_19: -2425114378714544023
+      ZomboyWalk_2: 5676899973601397165
+      ZomboyWalk_20: -5990772010232067114
+      ZomboyWalk_21: 7585415102390382090
+      ZomboyWalk_22: 6555126467155772976
+      ZomboyWalk_23: -169510497164259983
+      ZomboyWalk_24: -4069746635481319868
+      ZomboyWalk_25: -580113419395017634
+      ZomboyWalk_26: 4053051696879404360
+      ZomboyWalk_3: 5529480672802652833
+      ZomboyWalk_4: -8250673933971690725
+      ZomboyWalk_5: 3343135864517550636
+      ZomboyWalk_6: -5678496061338272361
+      ZomboyWalk_7: 6652310578743566955
+      ZomboyWalk_8: 7422430779215298721
+      ZomboyWalk_9: 1966612666572904979
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

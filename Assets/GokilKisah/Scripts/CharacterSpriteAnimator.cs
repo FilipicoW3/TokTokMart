@@ -63,6 +63,14 @@ namespace GokilKisah
                 int frame=moving?Mathf.Min(2,(int)(CyclePhase*3)):0;
                 string skin=smoothSkin=="Keeper"?(row<6?"Sam":"Zack"):smoothSkin;
                 if(Time.timeScale==0&&!moving&&displayedSkin==skin)return;
+                if(GameArtLibrary.IsCustomer(skin))
+                {
+                    displayedSkin=skin;
+                    if(direction==0)mirrorWalk=false;else if(direction==1)mirrorWalk=true;
+                    artwork.sprite=GameArtLibrary.CustomerPose(skin,moving,moving?(int)(CyclePhase*GameArtLibrary.CustomerWalkCount(skin)):(int)(clock*12));
+                    if(skin=="Cat")artwork.transform.localPosition=new Vector3(0,moving?Mathf.Sin(CyclePhase*Mathf.PI*4)*.025f:0,0);
+                    artwork.flipX=mirrorWalk;return;
+                }
                 if(skin=="Sam"||skin=="Zack"||skin=="Toyol")
                 {
                     displayedSkin=skin;

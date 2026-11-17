@@ -29,6 +29,10 @@ namespace GokilKisah.Editor
             {
                 switch(command.action)
                 {
+                    case "releaseart":ReleasePolishTools.ImportArt(command.path);ReplyTo(command.action,"Release artwork imported");break;
+                    case "releaseui":ReleasePolishTools.PrepareUI();ReplyTo(command.action,"Targeted Canvas authoring started");break;
+                    case "releaseverify":RequireGame().BeginReleaseVerification(command.path);ReplyTo(command.action,"Release regression started");break;
+                    case "releaseplaytest":RequireGame().BeginReleasePlaytest(command.path);ReplyTo(command.action,"Shift profile playthroughs started");break;
                     case "november11art":NovemberUpdateTools.Apply(command.path);ReplyTo(command.action,"New art and Bigbesty imported");break;
                     case "november11playtest":RequireGame().BeginNovemberPlaytest(command.path);ReplyTo(command.action,"Full shift playthroughs started");break;
                     case "november11verify":RequireGame().BeginNovemberVerification(command.path);ReplyTo(command.action,"Score, campaign and feedback verification started");break;

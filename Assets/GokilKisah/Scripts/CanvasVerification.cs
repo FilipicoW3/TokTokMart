@@ -10,7 +10,7 @@ namespace GokilKisah
         public void BeginCanvasVerification(string folder){StartCoroutine(VerifyCanvas(folder));}
         IEnumerator VerifyCanvas(string folder)
         {
-            Directory.CreateDirectory(folder);var report=new StringBuilder();testing=true;settingsOpen=false;mainMenu=true;selected=false;noticeUntil=0;bool savedTouch=showTouchControls;float savedVolume=masterVolume;
+            Directory.CreateDirectory(folder);var report=new StringBuilder();testing=true;settingsOpen=false;settingsTab=0;mainMenu=true;selected=false;noticeUntil=0;bool savedTouch=showTouchControls;float savedVolume=masterVolume;
             System.Action<bool,string> check=(ok,label)=>report.AppendLine((ok?"PASS ":"FAIL ")+label);
             yield return null;yield return new WaitForEndOfFrame();
             check(editableUI&&editableUI.GetComponentsInChildren<TokMartCanvasElement>(true).Length>100,"Authored Canvas prefab is bound");

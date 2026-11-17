@@ -61,8 +61,12 @@ namespace GokilKisah
                 foreach(Encounter boss in new[]{Encounter.Goblins,Encounter.KKung,Encounter.Salmah,Encounter.Bo})
                 {encounter=boss;yield return new WaitForEndOfFrame();yield return null;}
                 encounter=Encounter.Store;
+                var previewShopper=SpawnCustomer();previewShopper.state=ShopperState.Queuing;previewShopper.position=QueuePoint(0);customerQueue.Add(previewShopper);
+                yield return new WaitForEndOfFrame();yield return null;ResetCustomers();
             }
             for(int tab=0;tab<6;tab++){settingsTab=tab;settingsOpen=true;yield return new WaitForEndOfFrame();yield return null;}
+            campaignActive=false;settingsTab=2;yield return new WaitForEndOfFrame();yield return null;
+            campaignActive=true;
             settingsOpen=false;
             for(int task=0;task<3;task++)
             {skillType=task;PrepareTask(task);taskFeedback="Task feedback";yield return new WaitForEndOfFrame();yield return null;taskCombo=4;yield return new WaitForEndOfFrame();yield return null;taskCombo=0;}

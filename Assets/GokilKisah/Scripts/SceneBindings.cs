@@ -18,6 +18,7 @@ namespace GokilKisah
         readonly HashSet<int> aliveShopperIds=new HashSet<int>();
         readonly List<int> removedShopperIds=new List<int>();
         static readonly int[] customerSkinRows={9,12,3};
+        static readonly string[] customerSkins={"Girl","Zomboy","Cat","Zomgirl"};
         SoftOccluder[] softOccluders=Array.Empty<SoftOccluder>();
         readonly List<CharacterSpriteAnimator> goblinViews=new List<CharacterSpriteAnimator>(),idolViews=new List<CharacterSpriteAnimator>();
         Transform runtimeObjects;
@@ -98,8 +99,11 @@ namespace GokilKisah
             if(GeometryWasEdited())RefreshSceneGeometry();
             if(shop.playerCharacter.WasMovedInScene())player=ShopLayout.ToGame(shop.playerCharacter.transform.position);
             if(shop.partnerCharacter.WasMovedInScene())helper=ShopLayout.ToGame(shop.partnerCharacter.transform.position);
-            for(int i=0;i<spillViews.Count&&i<spills.Count;i++)
-                if(spillViews[i]&&spillViews[i].gameObject.activeSelf)spills[i]=spillViews[i].Position;
+            // Only intentional transform edits flow back into simulation. A stale visual must
+            // never overwrite the next spill after a removal or cleanup replenishment.
+            if(spillViews.Count==spills.Count)for(int i=0;i<spills.Count;i++)
+                if(spillViews[i]&&spillViews[i].gameObject.activeSelf&&spillViews[i].HasManualEdit)
+                    spills[i]=spillViews[i].Position;
         }
         bool SceneWalkable(Vector2 p)
         {
@@ -128,7 +132,27 @@ namespace GokilKisah
             spills.Clear();spills.AddRange(initialSpillPositions);
             foreach(var view in spillViews)if(view){if(view.runtimeSpawned)Destroy(view.gameObject);else view.gameObject.SetActive(false);}
             spillViews.Clear();
-            for(int i=0;i<authoredSpills.Length;i++)if(authoredSpills[i]){authoredSpills[i].transform.position=ShopLayout.ToWorld(initialSpillPositions[i]);authoredSpills[i].gameObject.SetActive(true);spillViews.Add(authoredSpills[i]);}
+            for(int i=0;i<authoredSpills.Length;i++)if(authoredSpills[i]){authoredSpills[i].ApplyPosition(initialSpillPositions[i]);authoredSpills[i].gameObject.SetActive(true);spillViews.Add(authoredSpills[i]);}
+        }
+        bool ClearSpill(int index)
+        {
+            if(index<0||index>=spills.Count)return false;
+            spills.RemoveAt(index);
+            // Remove the matching view immediately, including the authored opening hazard.
+            if(index<spillViews.Count){RetireSpillView(spillViews[index]);spillViews.RemoveAt(index);}
+            return true;
+        }
+        void RetireSpillView(SpillHazard view)
+        {if(!view)return;view.gameObject.SetActive(false);if(view.runtimeSpawned)Destroy(view.gameObject);}
+        void SyncSpillViews()
+        {
+            while(spillViews.Count>spills.Count){int last=spillViews.Count-1;RetireSpillView(spillViews[last]);spillViews.RemoveAt(last);}
+            while(spillViews.Count<spills.Count)
+            {
+                var view=Instantiate(shop.spillTemplate,runtimeObjects);view.name="Water spill";view.runtimeSpawned=true;view.gameObject.SetActive(true);
+                if(view.artwork)view.artwork.sortingOrder=-900;spillViews.Add(view);
+            }
+            for(int i=0;i<spills.Count;i++)if(spillViews[i])spillViews[i].ApplyPosition(spills[i]);
         }
         CharacterSpriteAnimator SpawnView(CharacterSpriteAnimator template,string title)
         {var view=Instantiate(template,runtimeObjects);view.name=title;view.gameObject.SetActive(true);return view;}
@@ -205,20 +229,19 @@ namespace GokilKisah
             {
                 alive.Add(c.id);
                 if(!shopperViews.TryGetValue(c.id,out var view)||!view)
-                {view=SpawnView(shop.customerTemplate,"Customer "+c.id);view.gameObject.AddComponent<CustomerMoodPresentation>();shopperViews[c.id]=view;}
+                {
+                    view=SpawnView(shop.customerTemplate,"Customer "+c.id);view.gameObject.AddComponent<CustomerMoodPresentation>();shopperViews[c.id]=view;
+                    view.smoothSkin=customerSkins[(c.id-1)%customerSkins.Length];
+                    var art=view.artwork;var scale=art.transform.parent.lossyScale;float height=view.smoothSkin=="Cat"?.62f:.96f;
+                    art.transform.localScale=new Vector3(height/1.88f/scale.x,height/1.88f/scale.y,1);art.transform.localPosition=Vector3.zero;
+                }
                 view.GetComponent<CustomerMoodPresentation>().SetFrustration(CustomerFrustration(c),c.state==ShopperState.Queuing);
                 if(view.heldStock)view.heldStock.gameObject.SetActive(c.basket>0);
                 view.Apply(c.position,c.facing,customerSkinRows[c.id%3],c.motion,pulse+c.id*.14f);
             }
             var removed=removedShopperIds;removed.Clear();foreach(var pair in shopperViews)if(!alive.Contains(pair.Key)){if(pair.Value)Destroy(pair.Value.gameObject);removed.Add(pair.Key);}
             foreach(int id in removed)shopperViews.Remove(id);
-            while(spillViews.Count<spills.Count)
-            {
-                var view=Instantiate(shop.spillTemplate,runtimeObjects);view.name="Water spill";view.runtimeSpawned=true;view.gameObject.SetActive(true);
-                if(view.artwork)view.artwork.sortingOrder=-900;spillViews.Add(view);
-            }
-            while(spillViews.Count>spills.Count){var last=spillViews[spillViews.Count-1];if(last){if(last.runtimeSpawned)Destroy(last.gameObject);else last.gameObject.SetActive(false);}spillViews.RemoveAt(spillViews.Count-1);}
-            for(int i=0;i<spills.Count;i++)if(spillViews[i])spillViews[i].transform.position=ShopLayout.ToWorld(spills[i]);
+            SyncSpillViews();
             while(goblinViews.Count<shop.goblinSpawns.Length)goblinViews.Add(SpawnView(shop.goblinTemplate,"Goblin "+(goblinViews.Count+1)));
             while(idolViews.Count<shop.idolSpawns.Length)idolViews.Add(SpawnView(shop.idolTemplate,"K-Kung idol "+(idolViews.Count+1)));
             for(int i=0;i<goblinViews.Count;i++)

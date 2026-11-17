@@ -23,11 +23,11 @@ namespace GokilKisah
         public int StockGoal=>Targets.stock;
         public int CleanGoal=>Targets.clean;
         public float ShiftBudget=>Targets.duration;
-        public float ArrivalInterval=>Mathf.Max(1.6f,4.5f/(1+(CurrentLevel-1)*.065f));
+        public float ArrivalInterval=>Mathf.Max(2.2f,4.5f/(1+Mathf.Min(25,CurrentLevel-1)*.035f))*Targets.ArrivalScale;
         public float ShiftRush=>Mathf.SmoothStep(0,1,Mathf.Clamp01(shiftTime/(campaignActive?ShiftBudget:240f)));
         public float CurrentArrivalInterval=>Mathf.Max(1.4f,(campaignActive?ArrivalInterval:4.5f)*Mathf.Lerp(2.6f,.65f,ShiftRush));
         public int CustomerLimit=>Mathf.RoundToInt(Mathf.Lerp(campaignActive?Mathf.Min(5,2+(CurrentLevel-1)/5):2,campaignActive?Mathf.Min(10,6+(CurrentLevel-1)/3):6,ShiftRush));
-        public float CustomerPatience=>Mathf.Max(45,95/(1+(CurrentLevel-1)*.025f));
+        public float CustomerPatience=>Mathf.Max(55,95/(1+Mathf.Min(30,CurrentLevel-1)*.018f))*(Targets.focus==ShiftFocus.Restock||Targets.focus==ShiftFocus.Cleanup?1.15f:1);
         public float TaskDifficulty=>campaignActive?Mathf.Min(1.35f,1+(CurrentLevel-1)*.018f):1;
         public static Encounter MilestoneBoss(int level)=>(Encounter)(1+((Mathf.Max(5,level)/5-1)%4));
         int SavedLevel=>canvasPreviewLevel>0?canvasPreviewLevel:chosenLevel>0?chosenLevel:Mathf.Max(1,PlayerPrefs.GetInt(LevelSave,1));
@@ -46,6 +46,8 @@ namespace GokilKisah
             tuning.rayWait=Mathf.Min(15,5+CurrentLevel*.3f);
             tuning.nailHits=3+Mathf.Min(5,CurrentLevel/10);
             EnsureShiftCleanupWork();
+            if(Targets.focus==ShiftFocus.Restock)for(int i=0;i<shelfStock.Length;i++)shelfStock[i]=Mathf.Min(shelfStock[i],1);
+            if(Targets.focus==ShiftFocus.Chaos)chaos=18;
             notifiedShiftGoals=0;
             shiftBriefOpen=!testing&&!verificationRunning&&!replay;
             if(persist){PlayerPrefs.SetInt(UnlockSave,Mathf.Max(HighestUnlocked,CurrentLevel));PlayerPrefs.SetInt(LevelSave,CurrentLevel);PlayerPrefs.Save();}
@@ -81,6 +83,8 @@ namespace GokilKisah
         {
             if(!campaignActive||levelResults||(!verification&&(testing||verificationRunning||replay)))return;
             NotifyShiftGoals();
+            if(Targets.focus==ShiftFocus.Chaos&&!bossActive)
+                chaos=Mathf.Min(100,chaos+dt*(.08f+spills.Count*.08f+Mathf.Max(0,customerQueue.Count-1)*.06f));
             if(gameOver){FinishCampaignLevel(false,"Bo beat the countdown.");return;}
             if(bossActive&&resolved)
             {
@@ -99,8 +103,8 @@ namespace GokilKisah
             if(mandatoryBossPending)
             {mandatoryBossPending=false;StartCampaignEncounter(MilestoneBoss(CurrentLevel));return;}
             encounterRollClock=UnityEngine.Random.Range(18f,32f);
-            // Only defeated bosses are eligible; two surprise encounters at most in one shift.
-            if(UnlockedBossMask!=0&&randomFights<2&&UnityEngine.Random.value<Mathf.Min(.65f,.25f+CurrentLevel*.01f))
+            // Only defeated bosses return; chaos shifts allow one surprise encounter.
+            if(Targets.focus==ShiftFocus.Chaos&&UnlockedBossMask!=0&&randomFights<1&&UnityEngine.Random.value<.6f)
             {var next=PickUnlockedBoss();if(next!=Encounter.Store){randomFights++;StartCampaignEncounter(next);}}
         }
         void FinishCampaignLevel(bool won,string reason)
@@ -109,6 +113,7 @@ namespace GokilKisah
             levelResults=true;levelWon=won;gameOver=!won;levelFailure=reason;skillType=-1;
             playerVelocity=Vector2.zero;ReleaseMobileControls();heldKeys.Clear();shiftBriefOpen=false;
             invoiceStars=Rating(won).stars;
+            MobileHaptics.Pulse(won?65:90);
             if(won&&campaignPersistence)SaveLevelBest();
             if(won){SaveCampaignProgress(CurrentLevel+1);PlaySound("Success");}else PlaySound("Miss");
         }

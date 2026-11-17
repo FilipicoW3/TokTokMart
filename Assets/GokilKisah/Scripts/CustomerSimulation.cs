@@ -45,7 +45,7 @@ namespace GokilKisah
         Shopper SpawnCustomer()
         {
             var c=new Shopper{id=++nextCustomer,position=ShopDoor,goal=ShopLayout.ToGame(shop.customerEntryTarget.position),
-                wanted=1+(nextCustomer%3),clumsy=nextCustomer%3==1,state=ShopperState.Entering};
+                wanted=1+(nextCustomer%3),clumsy=campaignActive?nextCustomer%Targets.SpillEvery==1:nextCustomer%3==1,state=ShopperState.Entering};
             customers.Add(c);return c;
         }
         void ChooseShelf(Shopper c)

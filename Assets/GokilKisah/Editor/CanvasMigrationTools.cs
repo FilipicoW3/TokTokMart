@@ -48,7 +48,7 @@ namespace GokilKisah.Editor
             }
             catch(System.Exception ex){File.WriteAllText(Status,"ERROR: "+ex);Debug.LogException(ex);phase=0;}
         }
-        static void PersistArtwork(TokMartCanvas ui)
+        public static void PersistArtwork(TokMartCanvas ui)
         {
             const string folder="Assets/GokilKisah/Resources/CanvasGenerated";Directory.CreateDirectory(folder);
             var textures=new System.Collections.Generic.Dictionary<Texture,Texture2D>();

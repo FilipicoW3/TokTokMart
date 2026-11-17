@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: e23ce49ddfad2c04696fc360b33f9352
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4649077815234245677
+    second: ZomboyIdle_0
+  - first:
+      213: 8249008808001892977
+    second: ZomboyIdle_1
+  - first:
+      213: -6262626231161158719
+    second: ZomboyIdle_2
+  - first:
+      213: 7080291016122180661
+    second: ZomboyIdle_3
+  - first:
+      213: 6263748546590993976
+    second: ZomboyIdle_4
+  - first:
+      213: -1092130724832614617
+    second: ZomboyIdle_5
+  - first:
+      213: -3010932930857726018
+    second: ZomboyIdle_6
+  - first:
+      213: 2262690089834988200
+    second: ZomboyIdle_7
+  - first:
+      213: 6051889394745676134
+    second: ZomboyIdle_8
+  - first:
+      213: -5929292855954259097
+    second: ZomboyIdle_9
+  - first:
+      213: 5897120073909978061
+    second: ZomboyIdle_10
+  - first:
+      213: 593031027141094356
+    second: ZomboyIdle_11
+  - first:
+      213: 2522979252951503506
+    second: ZomboyIdle_12
+  - first:
+      213: 3166099352552007399
+    second: ZomboyIdle_13
+  - first:
+      213: -2502983225661880800
+    second: ZomboyIdle_14
+  - first:
+      213: -1413756231229081853
+    second: ZomboyIdle_15
+  - first:
+      213: 2470508425866377212
+    second: ZomboyIdle_16
+  - first:
+      213: -7817607405997706632
+    second: ZomboyIdle_17
+  - first:
+      213: 3914213389024481901
+    second: ZomboyIdle_18
+  - first:
+      213: -2059772749232727369
+    second: ZomboyIdle_19
+  - first:
+      213: -6095981864951463456
+    second: ZomboyIdle_20
+  - first:
+      213: 4946527934735303479
+    second: ZomboyIdle_21
+  - first:
+      213: 3453723913254271678
+    second: ZomboyIdle_22
+  - first:
+      213: 4594067298496633251
+    second: ZomboyIdle_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ZomboyIdle_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1027
+        width: 127
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d24bf2e14a7d48040800000000000000
+      internalID: 4649077815234245677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_1
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 1027
+        width: 127
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17275064ecd5a7270800000000000000
+      internalID: 8249008808001892977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_2
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 1027
+        width: 127
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c38892af9ea619a0800000000000000
+      internalID: -6262626231161158719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_3
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1027
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5342a5a8a2f324260800000000000000
+      internalID: 7080291016122180661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_4
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 1027
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83eece9cd1e4de650800000000000000
+      internalID: 6263748546590993976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_5
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 771
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 727ef0264e8f7d0f0800000000000000
+      internalID: -1092130724832614617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_6
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 771
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf03b5b3740736d0800000000000000
+      internalID: -3010932930857726018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_7
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 771
+        width: 129
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a2496106a0b66f10800000000000000
+      internalID: 2262690089834988200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_8
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 771
+        width: 129
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66115c91751acf350800000000000000
+      internalID: 6051889394745676134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_9
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 771
+        width: 129
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 763c59fef8be6bda0800000000000000
+      internalID: -5929292855954259097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_10
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 515
+        width: 130
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc3ca338677c6d150800000000000000
+      internalID: 5897120073909978061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_11
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 515
+        width: 130
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dba781c39eda3800800000000000000
+      internalID: 593031027141094356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_12
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 515
+        width: 130
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 292dad3634c630320800000000000000
+      internalID: 2522979252951503506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_13
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 515
+        width: 129
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e6e470269e30fb20800000000000000
+      internalID: 3166099352552007399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_14
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 515
+        width: 129
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02689a3840e934dd0800000000000000
+      internalID: -2502983225661880800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_15
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 259
+        width: 129
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3077896b234516ce0800000000000000
+      internalID: -1413756231229081853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_16
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 259
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf7ff52f252094220800000000000000
+      internalID: 2470508425866377212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_17
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 259
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8723b04db77428390800000000000000
+      internalID: -7817607405997706632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_18
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 259
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d62d1e3c654125630800000000000000
+      internalID: 3914213389024481901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_19
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 259
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba14f309973a63e0800000000000000
+      internalID: -2059772749232727369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_20
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 3
+        width: 128
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e1485eaac8b66ba0800000000000000
+      internalID: -6095981864951463456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_21
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 3
+        width: 127
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 733c175e2f895a440800000000000000
+      internalID: 4946527934735303479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_22
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 3
+        width: 127
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebafac9b9971eef20800000000000000
+      internalID: 3453723913254271678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomboyIdle_23
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 3
+        width: 127
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a951291ed761cf30800000000000000
+      internalID: 4594067298496633251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ZomboyIdle_0: 4649077815234245677
+      ZomboyIdle_1: 8249008808001892977
+      ZomboyIdle_10: 5897120073909978061
+      ZomboyIdle_11: 593031027141094356
+      ZomboyIdle_12: 2522979252951503506
+      ZomboyIdle_13: 3166099352552007399
+      ZomboyIdle_14: -2502983225661880800
+      ZomboyIdle_15: -1413756231229081853
+      ZomboyIdle_16: 2470508425866377212
+      ZomboyIdle_17: -7817607405997706632
+      ZomboyIdle_18: 3914213389024481901
+      ZomboyIdle_19: -2059772749232727369
+      ZomboyIdle_2: -6262626231161158719
+      ZomboyIdle_20: -6095981864951463456
+      ZomboyIdle_21: 4946527934735303479
+      ZomboyIdle_22: 3453723913254271678
+      ZomboyIdle_23: 4594067298496633251
+      ZomboyIdle_3: 7080291016122180661
+      ZomboyIdle_4: 6263748546590993976
+      ZomboyIdle_5: -1092130724832614617
+      ZomboyIdle_6: -3010932930857726018
+      ZomboyIdle_7: 2262690089834988200
+      ZomboyIdle_8: 6051889394745676134
+      ZomboyIdle_9: -5929292855954259097
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

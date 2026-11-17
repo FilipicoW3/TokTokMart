@@ -61,6 +61,7 @@ namespace GokilKisah
                 if(arg.StartsWith("--verify-output=")) BeginVerification(arg.Substring(16));
                 if(arg.StartsWith("--customer-output=")) BeginCustomerCapture(arg.Substring(18));
                 if(arg.StartsWith("--ui-output=")) BeginPresentationCapture(arg.Substring(12));
+                if(arg.StartsWith("--release-verify="))BeginReleaseVerification(arg.Substring(17));
             }
         }
         void OnEnable()
@@ -253,8 +254,8 @@ namespace GokilKisah
             PlaySound(skillType==1?"Scan":skillType==2?"Mop":"Stock");
             taskFeedbackFailed=false;taskCombo++;skillScans=taskCombo;taskFeedback="Nice! "+taskCombo+" / "+(skillType==0?3:4);if(taskCombo<(skillType==0?3:4)){skillClock=0;return true;}
             if(skillType==0){shelfStock[skillTarget]=ShelfCapacity(skillTarget);carryingCrate=false;stockActions++;SetStep("03 / CHECKOUT / ENTER THE TOTAL","Move to checkout. Add up the receipt and enter the total on the keypad.");}
-            else{if(skillTarget<spills.Count)spills.RemoveAt(skillTarget);hazardsCleared++;SetStep("05 / STORE LOOP COMPLETE","Crate, stocking, checkout and hazard clearing demonstrated. The AI partner keeps working.");}
-            skillType=-1;chaos=Mathf.Max(0,chaos-6);Toast("Task complete! +"+(skillScans==3?150:100)+" objective points (up to goal)");EnsureShiftCleanupWork();return true;
+            else{if(ClearSpill(skillTarget))hazardsCleared++;SetStep("05 / STORE LOOP COMPLETE","Crate, stocking, checkout and hazard clearing demonstrated. The AI partner keeps working.");}
+            skillType=-1;chaos=Mathf.Max(0,chaos-(campaignActive&&Targets.focus==ShiftFocus.Chaos?12:6));Toast("Task complete!");MobileHaptics.Pulse(35);EnsureShiftCleanupWork();return true;
         }
         int TotalStock(){int total=0;foreach(int n in shelfStock)total+=n;return total;}
         void ServeCustomer()

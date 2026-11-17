@@ -28,3 +28,7 @@ Current runtime resources are in Resources/OnlineArt. Previous pixel sheets and 
 - Lato — Lukasz Dziedzic, SIL Open Font License: https://github.com/google/fonts/tree/main/ofl/lato
 
 Original audio and font license files remain in ThirdPartyLicenses.
+
+## November 17 supplied artwork
+
+Cat, TokTok girl, Zomboy and Zomgirl (pocong) customers, their idle and walk sheets, menu Start/Settings/Level signs and signpost (Assets 12-15), and the refreshed menu background were supplied by the project artist. Their ownership is unchanged. Selected originals are preserved in `ArtSources/November17`; exact source SHA-256 matches are in `Verification/Release05/art-import.json`.

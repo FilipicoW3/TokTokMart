@@ -1,10 +1,19 @@
-# TokTokMart demo 0.4.0
+# TokTokMart demo 0.5.0
 
 Unity 6.3 LTS **6000.3.9f1**. Open `Assets/GokilKisah/Scenes/TokMartPitch.unity` and press Play.
 
-Prebuilt Android APK and Windows x64 ZIP: [GitHub release 0.4.0](https://github.com/MAYKELL07/TokTokMart/releases/tag/v0.4.0-demo). Extract the Windows ZIP before running `TokTokMart.exe`.
+Prebuilt Android APK and Windows x64 ZIP: [GitHub release 0.5.0](https://github.com/MAYKELL07/TokTokMart/releases/tag/v0.5.0-demo). Extract the Windows ZIP before running `TokTokMart.exe`.
 
-The November demo includes the supplied storefront illustration, logo, UI, Sam and Zack portraits and walk cycles, and Toyol encounter animation. The existing shop, storage room, customer traffic, checkout, restocking, cleaning and encounters are retained.
+This release fixes the opening puddle, adds varied shift goals, simplifies scoring screens, and adds responsive button motion, star bursts and optional mobile vibration. Supplied cat, TokTok girl and two pocong customers join the shop, with new menu signs and signpost.
+
+## November 17 update (0.5.0)
+
+- Cleaning removes the selected spill and its matching visual together. The opening puddle stays gone; retries restore original hazards.
+- Rush shifts bring faster arrivals and a shorter clock; restock shifts start with low shelves; cleanup shifts supply more puddles; chaos shifts add pressure and returning encounters. Every fifth shift retains its milestone boss. Goals grow in bounded tiers.
+- Briefings show the focus, three goals and closing time. Results show stars, score and one short tip. The long perfect-score guide and repeated point tables have been removed.
+- Buttons lift on hover, compress when pressed and pop on release. Earned result stars pop in sequence with colored bursts and sound. Controls and effects remain authored in the editable Canvas.
+- Settings > Gameplay > Vibration switches mobile feedback on or off. Android uses short pulses for taps, tasks, misses and results; unsupported hardware is handled quietly.
+- Supplied Girl, Zomboy and Zomgirl idle/walk sheets are used for customers. The cat uses its supplied static art with a small movement bob. Source hashes are recorded in `Verification/Release05/art-import.json`.
 
 ## Collaborating with a friend
 
@@ -106,14 +115,14 @@ Additional art/audio/font credits: `Assets/GokilKisah/ASSET-CREDITS.md` and the 
 
 Gaits follow actual ground distance after collisions, with uninterrupted phase when switching between walking and sprinting. Idle uses the supplied standing artwork. Footstep contacts follow the same stride; blocked movement, pause and teleports produce no extra footsteps. The supplied walk cycles are retimed for sprinting; no separate run drawings were supplied.
 
-Every shift opens with a goal briefing before its timer starts. Customer targets rise every shift, restocking targets every three shifts, and cleanup targets every four. The workload per available second rises every shift alongside the existing traffic, patience and skill-check difficulty curves. Required cleanup work is kept available in small batches. The partner covers checkout while player restock targets remain, then returns to normal restocking support.
+Every shift opens with a short goal briefing before its timer starts. The partner covers checkout while the player completes required restocking. Required cleanup work stays available in small batches.
 
-| Shift | Customers | Restocks | Cleanups | Time |
-| --- | ---: | ---: | ---: | ---: |
-| 1 | 3 | 1 | 1 | 2:52 |
-| 2 | 4 | 1 | 1 | 3:00 |
-| 5 | 7 | 2 | 2 | 3:52 |
-| 10 | 12 | 4 | 3 | 5:16 |
-| 20 | 22 | 7 | 5 | 7:48 |
+| Shift | Focus | Customers | Restocks | Cleanups | Time |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 1 | Welcome | 3 | 1 | 1 | 2:52 |
+| 2 | Lunch rush | 5 | 1 | 1 | 2:33 |
+| 3 | Stock up | 3 | 3 | 1 | 3:09 |
+| 4 | Mop up | 3 | 1 | 4 | 3:13 |
+| 5 | Chaos + boss | 4 | 2 | 2 | 3:23 |
 
-Boss encounters remain every fifth shift. Completing all targets and any required boss unlocks the next shift. The HUD shows goal progress and shop chaos. Movement/shift checks, the first 20 shifts' curve, and a recorded walk/run preview are in `Verification/Polish03`.
+Complete all targets and the required boss to unlock the next shift. Existing unlocks and best scores are retained. Replaying older shifts uses the new balance.

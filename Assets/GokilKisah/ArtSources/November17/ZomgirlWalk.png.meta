@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: 5869d4aaf3ce95d499099f008356358c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7468526615483154842
+    second: ZomgirlWalk_0
+  - first:
+      213: 4506150580062814270
+    second: ZomgirlWalk_1
+  - first:
+      213: 6261499556804886098
+    second: ZomgirlWalk_2
+  - first:
+      213: 4850365011361846565
+    second: ZomgirlWalk_3
+  - first:
+      213: -1530827774184505791
+    second: ZomgirlWalk_4
+  - first:
+      213: 260894051909378034
+    second: ZomgirlWalk_5
+  - first:
+      213: 4300800824414368542
+    second: ZomgirlWalk_6
+  - first:
+      213: 7588318528176529039
+    second: ZomgirlWalk_7
+  - first:
+      213: -659443407345427587
+    second: ZomgirlWalk_8
+  - first:
+      213: 773671455096570556
+    second: ZomgirlWalk_9
+  - first:
+      213: 1446182972122468147
+    second: ZomgirlWalk_10
+  - first:
+      213: 4443644397703099555
+    second: ZomgirlWalk_11
+  - first:
+      213: 7517130680791289419
+    second: ZomgirlWalk_12
+  - first:
+      213: 2044034253636216630
+    second: ZomgirlWalk_13
+  - first:
+      213: 480964037723077966
+    second: ZomgirlWalk_14
+  - first:
+      213: -4862287385182618858
+    second: ZomgirlWalk_15
+  - first:
+      213: -6992278939808189167
+    second: ZomgirlWalk_16
+  - first:
+      213: -9017874108998581809
+    second: ZomgirlWalk_17
+  - first:
+      213: 934500313344811099
+    second: ZomgirlWalk_18
+  - first:
+      213: -7998862573025165361
+    second: ZomgirlWalk_19
+  - first:
+      213: 6792458332386756820
+    second: ZomgirlWalk_20
+  - first:
+      213: -1376462030591498659
+    second: ZomgirlWalk_21
+  - first:
+      213: 5482303047705033748
+    second: ZomgirlWalk_22
+  - first:
+      213: 916686686029579098
+    second: ZomgirlWalk_23
+  - first:
+      213: -1593729961120012463
+    second: ZomgirlWalk_24
+  - first:
+      213: -1935098317103293589
+    second: ZomgirlWalk_25
+  - first:
+      213: -7210885090234042799
+    second: ZomgirlWalk_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ZomgirlWalk_0
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1027
+        width: 150
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a918c67036985a760800000000000000
+      internalID: 7468526615483154842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_1
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 1027
+        width: 150
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e308015f310198e30800000000000000
+      internalID: 4506150580062814270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_2
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 1027
+        width: 150
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25efe9c0ca055e650800000000000000
+      internalID: 6261499556804886098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_3
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 1027
+        width: 150
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 525d43d8745ff4340800000000000000
+      internalID: 4850365011361846565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_4
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1027
+        width: 150
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14e3e63004861cae0800000000000000
+      internalID: -1530827774184505791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_5
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 1033
+        width: 150
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ff121802c1ee9300800000000000000
+      internalID: 260894051909378034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_6
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 780
+        width: 150
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e13fcec20938fab30800000000000000
+      internalID: 4300800824414368542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_7
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 783
+        width: 150
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8e1a7a2f7f1f4960800000000000000
+      internalID: 7588318528176529039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_8
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 784
+        width: 150
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7bd3b307bf29d6f0800000000000000
+      internalID: -659443407345427587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_9
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 784
+        width: 150
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb204edd612acba00800000000000000
+      internalID: 773671455096570556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_10
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 784
+        width: 150
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f049d30cfd11410800000000000000
+      internalID: 1446182972122468147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_11
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 784
+        width: 150
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a47f39490ffaad30800000000000000
+      internalID: 4443644397703099555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_12
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 529
+        width: 150
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e41c6d686325860800000000000000
+      internalID: 7517130680791289419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_13
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 529
+        width: 150
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 637a7bce25edd5c10800000000000000
+      internalID: 2044034253636216630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_14
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 529
+        width: 150
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4db83a7e3abca600800000000000000
+      internalID: 480964037723077966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_15
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 527
+        width: 150
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61bb35a726fa58cb0800000000000000
+      internalID: -4862287385182618858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_16
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 524
+        width: 150
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 115b946d95f66fe90800000000000000
+      internalID: -6992278939808189167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_17
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 520
+        width: 150
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc182ffc6431ad280800000000000000
+      internalID: -9017874108998581809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_18
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 259
+        width: 150
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b50a863751308fc00800000000000000
+      internalID: 934500313344811099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_19
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 259
+        width: 150
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcffaaf9ed45ef090800000000000000
+      internalID: -7998862573025165361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_20
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 259
+        width: 150
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d80e858dd8a34e50800000000000000
+      internalID: 6792458332386756820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_21
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 259
+        width: 150
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d56e7c37313d5ece0800000000000000
+      internalID: -1376462030591498659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_22
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 259
+        width: 150
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41cff7d439d051c40800000000000000
+      internalID: 5482303047705033748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_23
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 259
+        width: 150
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a538f132fa9b8bc00800000000000000
+      internalID: 916686686029579098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_24
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 3
+        width: 150
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1576b875b0fe1e9e0800000000000000
+      internalID: -1593729961120012463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_25
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 3
+        width: 150
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6b1a9b45562525e0800000000000000
+      internalID: -1935098317103293589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZomgirlWalk_26
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 3
+        width: 150
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1567070273acdeb90800000000000000
+      internalID: -7210885090234042799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ZomgirlWalk_0: 7468526615483154842
+      ZomgirlWalk_1: 4506150580062814270
+      ZomgirlWalk_10: 1446182972122468147
+      ZomgirlWalk_11: 4443644397703099555
+      ZomgirlWalk_12: 7517130680791289419
+      ZomgirlWalk_13: 2044034253636216630
+      ZomgirlWalk_14: 480964037723077966
+      ZomgirlWalk_15: -4862287385182618858
+      ZomgirlWalk_16: -6992278939808189167
+      ZomgirlWalk_17: -9017874108998581809
+      ZomgirlWalk_18: 934500313344811099
+      ZomgirlWalk_19: -7998862573025165361
+      ZomgirlWalk_2: 6261499556804886098
+      ZomgirlWalk_20: 6792458332386756820
+      ZomgirlWalk_21: -1376462030591498659
+      ZomgirlWalk_22: 5482303047705033748
+      ZomgirlWalk_23: 916686686029579098
+      ZomgirlWalk_24: -1593729961120012463
+      ZomgirlWalk_25: -1935098317103293589
+      ZomgirlWalk_26: -7210885090234042799
+      ZomgirlWalk_3: 4850365011361846565
+      ZomgirlWalk_4: -1530827774184505791
+      ZomgirlWalk_5: 260894051909378034
+      ZomgirlWalk_6: 4300800824414368542
+      ZomgirlWalk_7: 7588318528176529039
+      ZomgirlWalk_8: -659443407345427587
+      ZomgirlWalk_9: 773671455096570556
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

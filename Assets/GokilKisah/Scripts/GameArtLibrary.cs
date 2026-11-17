@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace GokilKisah
@@ -9,6 +10,14 @@ namespace GokilKisah
         static readonly Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
         static readonly Dictionary<string, Sprite[]> walks = new Dictionary<string, Sprite[]>();
         static readonly Dictionary<string, Sprite> idles = new Dictionary<string, Sprite>();
+        public static bool IsCustomer(string skin)=>skin=="Cat"||skin=="Girl"||skin=="Zomboy"||skin=="Zomgirl";
+        public static Sprite CustomerPose(string skin,bool walking,int frame)
+        {
+            string key="Customer/"+skin+(walking?"Walk":"Idle");
+            if(!walks.TryGetValue(key,out var frames))walks[key]=frames=Resources.LoadAll<Sprite>("NovemberArt/Customers/"+skin+(walking?"Walk":"Idle")).OrderBy(s=>s.name).ToArray();
+            return frames.Length>0?frames[Mathf.Abs(frame)%frames.Length]:Idle(skin);
+        }
+        public static int CustomerWalkCount(string skin){CustomerPose(skin,true,0);return Mathf.Max(1,walks["Customer/"+skin+"Walk"].Length);}
         public static int WalkFrameCount(string skin)=>skin=="Toyol"?41:49;
         public static Sprite Idle(string skin)
         {

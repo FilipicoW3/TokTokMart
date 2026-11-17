@@ -11,6 +11,7 @@ namespace GokilKisah
     public sealed class TokMartCanvas : MonoBehaviour
     {
         public RectTransform designRoot;
+        public AudioSource starAudio;
         readonly Dictionary<string,RawImage> controlImages=new Dictionary<string,RawImage>();
         readonly Dictionary<string,TokMartCanvasElement> elements=new Dictionary<string,TokMartCanvasElement>();
         readonly HashSet<TokMartCanvasElement> seen=new HashSet<TokMartCanvasElement>();

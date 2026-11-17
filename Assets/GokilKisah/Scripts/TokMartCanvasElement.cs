@@ -49,9 +49,9 @@ namespace GokilKisah
             BeginData();
             if(bindGameData&&(color!=originalColor||lastColor!=originalColor))image.color=TokMartCanvas.GuiColor(color);lastColor=color;
         }
-        public void ResetBindingPreview()
+        public void ResetBindingPreview(bool resetLayout=true)
         {
-            if(hasLayout){var r=GetComponent<RectTransform>();r.anchoredPosition=new Vector2(originalRect.x,-originalRect.y);r.sizeDelta=originalRect.size;}
+            if(resetLayout&&hasLayout){var r=GetComponent<RectTransform>();r.anchoredPosition=new Vector2(originalRect.x,-originalRect.y);r.sizeDelta=originalRect.size;}
             if(!hasData)return;
             var text=GetComponent<Text>();if(text){text.text=originalText;text.color=TokMartCanvas.GuiColor(originalColor);text.fontSize=originalFontSize;}
             var raw=GetComponent<RawImage>();if(raw){raw.texture=originalTexture;raw.uvRect=originalUV;raw.color=TokMartCanvas.GuiColor(originalColor);}
