@@ -44,7 +44,8 @@ namespace GokilKisah
                 if(!runtimeObjects){var go=new GameObject("Runtime customers and hazards");go.transform.SetParent(shop.transform,false);runtimeObjects=go.transform;}
                 sceneInitialized=true;
             }
-            if(runtimeObjects){foreach(Transform child in runtimeObjects)if(child.GetComponent<CharacterSpriteAnimator>()||child.GetComponent<SpillHazard>())Destroy(child.gameObject);}
+            if(shop.spillTemplate)shop.spillTemplate.gameObject.SetActive(false);
+            if(runtimeObjects){foreach(Transform child in runtimeObjects)if(child.GetComponent<CharacterSpriteAnimator>()||child.GetComponent<SpillHazard>()){child.gameObject.SetActive(false);Destroy(child.gameObject);}}
             shopperViews.Clear();goblinViews.Clear();idolViews.Clear();spillViews.Clear();
             RefreshSceneGeometry();
         }
@@ -130,9 +131,10 @@ namespace GokilKisah
             rayX=rayStart.x;shelfStock=new int[sceneShelves.Length];
             for(int i=0;i<sceneShelves.Length;i++)shelfStock[i]=sceneShelves[i].initialStock;
             spills.Clear();spills.AddRange(initialSpillPositions);
-            foreach(var view in spillViews)if(view){if(view.runtimeSpawned)Destroy(view.gameObject);else view.gameObject.SetActive(false);}
+            foreach(var view in spillViews)RetireSpillView(view);
             spillViews.Clear();
             for(int i=0;i<authoredSpills.Length;i++)if(authoredSpills[i]){authoredSpills[i].ApplyPosition(initialSpillPositions[i]);authoredSpills[i].gameObject.SetActive(true);spillViews.Add(authoredSpills[i]);}
+            CollapseStackedSpills();if(shop.spillTemplate)shop.spillTemplate.gameObject.SetActive(false);
         }
         bool ClearSpill(int index)
         {
@@ -214,7 +216,7 @@ namespace GokilKisah
         {
             if(!sceneInitialized||initialSpillPositions.Count!=authoredSpills.Length)return;
             ConfigureWorldCamera();
-            if(shop.fluorescentLights!=null)foreach(var lamp in shop.fluorescentLights)if(lamp){lamp.gameObject.SetActive(encounter==Encounter.KKung);lamp.color=lightsOn?Color.white:new Color(.5f,.5f,.6f);}
+            if(shop.fluorescentLights!=null)foreach(var lamp in shop.fluorescentLights)if(lamp){lamp.gameObject.SetActive(encounter==Encounter.KKung);lamp.color=Color.Lerp(new Color(.5f,.5f,.6f),Color.white,lightsOn?1:(float)circuitStep/CircuitGoal);}
             if(shop.playerCharacter.heldStock)shop.playerCharacter.heldStock.gameObject.SetActive(carryingCrate);
             if(shop.playerCharacter.heldGun)shop.playerCharacter.heldGun.gameObject.SetActive(hasGun);
             shop.boCarTarget.parent.gameObject.SetActive(encounter==Encounter.Bo);
@@ -242,18 +244,11 @@ namespace GokilKisah
             var removed=removedShopperIds;removed.Clear();foreach(var pair in shopperViews)if(!alive.Contains(pair.Key)){if(pair.Value)Destroy(pair.Value.gameObject);removed.Add(pair.Key);}
             foreach(int id in removed)shopperViews.Remove(id);
             SyncSpillViews();
-            while(goblinViews.Count<shop.goblinSpawns.Length)goblinViews.Add(SpawnView(shop.goblinTemplate,"Goblin "+(goblinViews.Count+1)));
-            while(idolViews.Count<shop.idolSpawns.Length)idolViews.Add(SpawnView(shop.idolTemplate,"K-Kung idol "+(idolViews.Count+1)));
-            for(int i=0;i<goblinViews.Count;i++)
-            {var view=goblinViews[i];view.gameObject.SetActive(encounter==Encounter.Goblins&&i<goblins);var p=ShopLayout.ToGame(shop.goblinSpawns[i].position);view.Apply(p+new Vector2(0,Mathf.Sin(pulse*3+i)*13),24,0,Vector2.one,pulse);}
-            for(int i=0;i<idolViews.Count;i++)
-            {var view=idolViews[i];view.gameObject.SetActive(encounter==Encounter.KKung&&!resolved);var p=ShopLayout.ToGame(shop.idolSpawns[i].position);view.Apply(p+new Vector2(0,Mathf.Sin(pulse*2+i)*12),24,0,Vector2.zero,pulse);}
-            shop.rayCharacter.gameObject.SetActive(encounter==Encounter.Goblins&&rayCalled);
-            shop.rayCharacter.Apply(new Vector2(rayX,rayStart.y),26,12,rayRemaining>0?Vector2.left:Vector2.zero,pulse);
-            shop.salmahCharacter.gameObject.SetActive(encounter==Encounter.Salmah&&!resolved);shop.salmahCharacter.Apply(salmah,23,3,Vector2.zero,pulse);
+            PresentActiveEncounters();
             shop.nailGun.gameObject.SetActive(encounter==Encounter.Salmah&&!hasGun);
             shop.lightSwitch.gameObject.SetActive(encounter==Encounter.KKung);shop.lightSwitch.transform.position=ShopLayout.ToWorld(lightSwitch);shop.lightSwitch.sortingOrder=(int)lightSwitch.y;
             shop.counterCan.gameObject.SetActive(encounter==Encounter.Bo&&(!canKicked||canFlying));shop.counterCan.transform.position=ShopLayout.ToWorld(canFlying?flyingCan:can);shop.counterCan.sortingOrder=(int)(canFlying?flyingCan.y:can.y);
+            shop.counterCan.transform.localRotation=Quaternion.Euler(0,0,canFlying?pulse*600:boSpawnDelay>0?Mathf.Sin(pulse*18)*15:0);
             roomPresentation.Tick(shop.playerCharacter.transform.position,selected&&!mainMenu,Time.unscaledDeltaTime);
         }
     }

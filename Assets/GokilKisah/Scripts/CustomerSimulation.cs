@@ -85,10 +85,10 @@ namespace GokilKisah
         }
         void CustomerSpill(Shopper c)
         {
-            if(c.spilled||spills.Count>=6||!Walkable(c.position))return;
-            foreach(var existing in spills)if(Vector2.Distance(existing,c.position)<55)return;
+            if(c.spilled)return;
             // A mishap is attached to the shopper's actual position, never a timer-spawned random puddle.
-            spills.Add(c.position);c.spilled=true;customerSpills++;c.scared=1.4f;PlaySound("Impact");
+            if(!TrySpawnSpill(c.position,6))return;
+            c.spilled=true;customerSpills++;c.scared=1.4f;PlaySound("Impact");
         }
         void ScareCustomer()
         {

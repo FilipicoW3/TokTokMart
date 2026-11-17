@@ -39,7 +39,7 @@ namespace GokilKisah
             var result=go.GetComponent<TokMartCanvas>();result.designRoot=root;result.EnsureEvents();return result;
 #endif
         }
-        void EnsureEvents(){if(!EventSystem.current){var go=new GameObject("UI EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));go.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();}}
+        void EnsureEvents(){if(!EventSystem.current&&!FindFirstObjectByType<EventSystem>(FindObjectsInactive.Include)){var go=new GameObject("UI EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));go.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();}}
         public void Begin(Matrix4x4 matrix){if(elements.Count==0)Index();sourceMatrix=matrix;seen.Clear();counts.Clear();parents.Clear();parents.Push(designRoot);building=true;}
         public void End(){foreach(var e in elements.Values)if(e)e.gameObject.SetActive(seen.Contains(e));building=false;}
         bool CanAuthor {

@@ -26,10 +26,10 @@ namespace GokilKisah
         readonly string[] scenarioTitles={"Store shift","Goblins","K-Kung","Miss Salmah","Bo & the gang"};
         readonly string[] scenarioDescriptions={
             "Keep the shelves stocked, serve your customers and clean up spills.",
-            "Call Uncle Ray and keep the shop running until he collects the goblins.",
-            "Find the switch. Fluorescent lights will drive the possessed idols away.",
-            "Pick up the nail gun, then move behind Miss Salmah. It fires automatically.",
-            "Find the poo-filled Ikan Iblis and kick it at Bo before he throws his can."};
+            "Call Ray. Shoo goblins to stun them so he can land his punches.",
+            "Restore three circuits. Dodge the marked areas while relighting the shop.",
+            "Dodge her rush, move behind her and tap Interact to fire the nail gun.",
+            "Return three Ikan Iblis cans. Beat each timer and dodge the throws."};
         void InitializePolish()
         {
             LoadControlSettings();
@@ -186,10 +186,7 @@ namespace GokilKisah
             if(replay)return stepBody;
             if(gameOver)return "Bo threw Ikan Iblis. Try again and beat the countdown.";
             if(resolved&&encounter!=Encounter.Store)return "Keep stocking, serving and cleaning.";
-            if(encounter==Encounter.Goblins)return rayCalled?"Uncle Ray arrives in "+rayRemaining.ToString("0.0")+"s.":"Call Uncle Ray from the wall phone.";
-            if(encounter==Encounter.KKung)return "Turn on the fluorescent lights.";
-            if(encounter==Encounter.Salmah)return hasGun?"Move behind Miss Salmah to fire.":"Pick up the nail gun near the back wall.";
-            if(encounter==Encounter.Bo)return canKicked?"Ikan Iblis is heading to Bo.":"Find Ikan Iblis and kick it before the timer runs out.";
+            if(encounter!=Encounter.Store)return ActiveEncounterObjective();
             if(hazardsCleared>0&&stockActions>0)return "Keep stocking, serving and cleaning.";
             if(stockActions>0&&served>0)return "Mop the spill.";
             if(stockActions>0)return "Serve a customer at checkout.";
@@ -198,10 +195,7 @@ namespace GokilKisah
         string InteractionLabel()
         {
             if(skillType>=0)return "Time the task";
-            if(encounter==Encounter.Goblins&&!resolved&&Vector2.Distance(player,phone)<76)return rayCalled?"Ray is on his way":"Call Uncle Ray";
-            if(encounter==Encounter.KKung&&!resolved&&Vector2.Distance(player,lightSwitch)<70)return "Turn on the lights";
-            if(encounter==Encounter.Salmah&&!hasGun&&Vector2.Distance(player,nailGun)<70)return "Pick up nail gun";
-            if(encounter==Encounter.Bo&&!canKicked&&Vector2.Distance(player,can)<70)return "Kick Ikan Iblis";
+            string encounterHint=ActiveInteractionLabel();if(encounterHint!=null)return encounterHint;
             if(NearestSpill()>=0)return "Mop the spill";
             if(Vector2.Distance(player,supply)<75)return "Collect stock";
             int index=NearestShelf();if(index>=0)return shelfStock[index]>=ShelfCapacity(index)?"Shelf is full":carryingCrate?"Restock shelf":"Needs a stock crate";

@@ -42,7 +42,6 @@ namespace GokilKisah.Editor
                 Copy(Path.Combine(source,pair.Item1),Runtime+"UI/"+pair.Item2+".png");
                 Texture(Runtime+"UI/"+pair.Item2+".png",pair.Item2=="MenuBackground"?2048:1024);
             }
-            PlayerSettings.bundleVersion="0.5.0";PlayerSettings.Android.bundleVersionCode=5;
             AssetDatabase.SaveAssets();Debug.Log("Release art imported: cat, TokTok girl, two pocong customers and supplied menu signs.");
         }
         static void Copy(string from,string to){Directory.CreateDirectory(Path.GetDirectoryName(to));File.Copy(from,to,true);AssetDatabase.ImportAsset(to);}

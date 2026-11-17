@@ -40,9 +40,7 @@ namespace GokilKisah
             {
                 var offset=i%3==0?new Vector2(0,70):i%3==1?new Vector2(-70,45):new Vector2(70,45);
                 var p=ShelfPoint((i/3+hazardsCleared)%sceneShelves.Length)+offset;
-                bool clear=Walkable(p);
-                foreach(var spill in spills)if(Vector2.Distance(p,spill)<65)clear=false;
-                if(clear)spills.Add(p);
+                TrySpawnSpill(p);
             }
         }
         void NotifyShiftGoals()

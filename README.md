@@ -1,10 +1,17 @@
-# TokTokMart demo 0.5.0
+# TokTokMart demo 0.5.1
 
 Unity 6.3 LTS **6000.3.9f1**. Open `Assets/GokilKisah/Scenes/TokMartPitch.unity` and press Play.
 
-Prebuilt Android APK and Windows x64 ZIP: [GitHub release 0.5.0](https://github.com/MAYKELL07/TokTokMart/releases/tag/v0.5.0-demo). Extract the Windows ZIP before running `TokTokMart.exe`.
+Prebuilt Android APK and Windows x64 ZIP: [GitHub release 0.5.1](https://github.com/MAYKELL07/TokTokMart/releases/tag/v0.5.1-demo). Extract the Windows ZIP before running `TokTokMart.exe`.
 
-This release fixes the opening puddle, adds varied shift goals, simplifies scoring screens, and adds responsive button motion, star bursts and optional mobile vibration. Supplied cat, TokTok girl and two pocong customers join the shop, with new menu signs and signpost.
+This update clears stacked puddles, gives Uncle Ray a real goblin fight, adds active mechanics to every boss, and makes later shifts longer with more required tasks and less customer patience. It retains the supplied customer and menu artwork, simple scoring screens, button motion, star bursts and mobile vibration.
+
+## November 17 gameplay update (0.5.1)
+
+- A completed mop minigame clears the captured patch even if spill indexes change. Stacked puddles clear together; goblin and customer mess cannot immediately reappear on freshly cleaned ground. The reusable spill template stays hidden.
+- Goblins roam and make mess. Call Ray, stun goblins with Interact and let him chase and punch them. K-Kung needs three circuits restored, Salmah must be dodged and shot from behind, and Bo needs three cans returned. Ground warnings and hit reactions show the consequences.
+- Every level adds one task and a longer closing deadline. Customer patience starts at 42 seconds and falls toward a 16-second minimum. The partner covers checkout during boss fights, while neglected queues and spills build chaos.
+- Friend's PR #1 artwork and TMP compatibility remain integrated. Existing unlocks, scores, art and authored UI layouts are retained.
 
 ## November 17 update (0.5.0)
 
@@ -115,14 +122,25 @@ Additional art/audio/font credits: `Assets/GokilKisah/ASSET-CREDITS.md` and the 
 
 Gaits follow actual ground distance after collisions, with uninterrupted phase when switching between walking and sprinting. Idle uses the supplied standing artwork. Footstep contacts follow the same stride; blocked movement, pause and teleports produce no extra footsteps. The supplied walk cycles are retimed for sprinting; no separate run drawings were supplied.
 
-Every shift opens with a short goal briefing before its timer starts. The partner covers checkout while the player completes required restocking. Required cleanup work stays available in small batches.
+Every shift opens with a short goal briefing before its timer starts. Each level adds one required task and a longer closing deadline. The partner covers checkout during required restocking and boss fights. Required cleanup work stays available in small batches. Customer patience starts at 42 seconds and decreases with the level, to a minimum of 16 seconds; neglected queues and spills also build chaos.
 
 | Shift | Focus | Customers | Restocks | Cleanups | Time |
 | --- | --- | ---: | ---: | ---: | ---: |
 | 1 | Welcome | 3 | 1 | 1 | 2:52 |
-| 2 | Lunch rush | 5 | 1 | 1 | 2:33 |
-| 3 | Stock up | 3 | 3 | 1 | 3:09 |
-| 4 | Mop up | 3 | 1 | 4 | 3:13 |
-| 5 | Chaos + boss | 4 | 2 | 2 | 3:23 |
+| 2 | Lunch rush | 4 | 1 | 1 | 3:06 |
+| 3 | Stock up | 3 | 3 | 1 | 3:30 |
+| 4 | Mop up | 3 | 1 | 4 | 3:49 |
+| 5 | Chaos + boss | 4 | 2 | 3 | 4:12 |
+| 10 | Chaos + boss | 6 | 4 | 4 | 5:42 |
+| 20 | Chaos + boss | 11 | 6 | 7 | 8:42 |
 
 Complete all targets and the required boss to unlock the next shift. Existing unlocks and best scores are retained. Replaying older shifts uses the new balance.
+
+Bosses require player actions rather than waiting for a timer:
+
+- **Goblins:** call Uncle Ray, then use Interact near goblins to stun them. Ray chases and punches stunned goblins; each needs two hits. Roaming goblins leave separate puddles. A completed mop minigame clears every layer of its captured patch and briefly protects it from fresh mess.
+- **K-Kung:** restore three circuits around the shop while dodging marked attacks. Each circuit relights more of the shop.
+- **Miss Salmah:** collect the nail gun, bait her rush, dodge and move behind her. Tap Interact to fire during the opening.
+- **Bo:** find and kick three cans back before their individual deadlines while avoiding marked throws.
+
+See [the gameplay verification record](Verification/GameplayRefresh/summary.md) for the spill reproduction, boss playthroughs and longer-shift checks.

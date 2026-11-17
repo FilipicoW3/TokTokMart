@@ -41,7 +41,6 @@ namespace GokilKisah.Editor
             PlayerSettings.SetScriptingBackend(NamedBuildTarget.Android,ScriptingImplementation.IL2CPP);
             PlayerSettings.Android.targetArchitectures=AndroidArchitecture.ARM64;
             PlayerSettings.Android.useCustomKeystore=false;
-            PlayerSettings.bundleVersion="0.5.0";PlayerSettings.Android.bundleVersionCode=5;
             EditorUserBuildSettings.buildAppBundle=false;Directory.CreateDirectory(Path.GetDirectoryName(path));
             BuildReport report;
             IsBuildingDemo=true;

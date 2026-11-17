@@ -27,7 +27,7 @@ namespace GokilKisah
         public float ShiftRush=>Mathf.SmoothStep(0,1,Mathf.Clamp01(shiftTime/(campaignActive?ShiftBudget:240f)));
         public float CurrentArrivalInterval=>Mathf.Max(1.4f,(campaignActive?ArrivalInterval:4.5f)*Mathf.Lerp(2.6f,.65f,ShiftRush));
         public int CustomerLimit=>Mathf.RoundToInt(Mathf.Lerp(campaignActive?Mathf.Min(5,2+(CurrentLevel-1)/5):2,campaignActive?Mathf.Min(10,6+(CurrentLevel-1)/3):6,ShiftRush));
-        public float CustomerPatience=>Mathf.Max(55,95/(1+Mathf.Min(30,CurrentLevel-1)*.018f))*(Targets.focus==ShiftFocus.Restock||Targets.focus==ShiftFocus.Cleanup?1.15f:1);
+        public float CustomerPatience=>Mathf.Max(16,42/(1+(CurrentLevel-1)*.03f));
         public float TaskDifficulty=>campaignActive?Mathf.Min(1.35f,1+(CurrentLevel-1)*.018f):1;
         public static Encounter MilestoneBoss(int level)=>(Encounter)(1+((Mathf.Max(5,level)/5-1)%4));
         int SavedLevel=>canvasPreviewLevel>0?canvasPreviewLevel:chosenLevel>0?chosenLevel:Mathf.Max(1,PlayerPrefs.GetInt(LevelSave,1));
@@ -71,6 +71,7 @@ namespace GokilKisah
             rayX=rayStart.x;salmah=ShopLayout.ToGame(shop.salmahSpawn.position);
             switchIndex=(switchIndex+1)%switches.Length;lightSwitch=switches[switchIndex];
             canIndex=(canIndex+1)%cans.Length;can=cans[canIndex];
+            ResetActiveEncounter(next);
             Toast(scenarioTitles[(int)next]+"! "+scenarioDescriptions[(int)next]);
             PlaySound("Impact",.5f);
         }
@@ -83,6 +84,8 @@ namespace GokilKisah
         {
             if(!campaignActive||levelResults||(!verification&&(testing||verificationRunning||replay)))return;
             NotifyShiftGoals();
+            EnsureShiftCleanupWork();
+            chaos=Mathf.Min(100,chaos+dt*(Mathf.Max(0,spills.Count-1)*.025f+Mathf.Max(0,customerQueue.Count-1)*.06f));
             if(Targets.focus==ShiftFocus.Chaos&&!bossActive)
                 chaos=Mathf.Min(100,chaos+dt*(.08f+spills.Count*.08f+Mathf.Max(0,customerQueue.Count-1)*.06f));
             if(gameOver){FinishCampaignLevel(false,"Bo beat the countdown.");return;}

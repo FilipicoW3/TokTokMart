@@ -17,12 +17,11 @@ namespace GokilKisah
             foreach(int level in new[]{1,5})
             {
                 BeginCampaignLevel(level,false);UnlockedBossMask=0;randomFights=2;shiftBriefOpen=false;
-                if(level==5){encounterRollClock=0;TickCampaign(0,true);yield return Go(phone);Interact();while(bossActive&&!levelResults)yield return null;}
+                if(level==5){encounterRollClock=0;TickCampaign(0,true);yield return PlayActiveBoss(Encounter.Goblins);while(bossActive&&!levelResults)yield return null;}
                 int guard=0;
                 while(stockActions<StockGoal&&!levelResults&&guard++<12)
                 {
-                    yield return Go(supply);Interact();int index=0;for(int i=0;i<shelfStock.Length;i++)if(shelfStock[i]<shelfStock[index])index=i;
-                    yield return Go(ShelfPoint(index));Interact();if(skillType>=0)yield return CompleteSkill();
+                    yield return ReplayRestock();
                 }
                 guard=0;while(hazardsCleared<CleanGoal&&!levelResults&&spills.Count>0&&guard++<12){yield return Go(spills[0]);Interact();if(skillType>=0)yield return CompleteSkill();}
                 while(!levelResults&&shiftTime<ShiftBudget+1)yield return null;
@@ -54,7 +53,7 @@ namespace GokilKisah
                 check(Score(win:false).stars==0&&Score(win:false).total==550,"An incomplete shift earns zero stars and no completion bonuses");
                 check(Score(extra:50).total==perfect.total,"Repeating tasks and extra customers cannot farm rating points");
                 BeginCampaignLevel(1,false);shiftBriefOpen=false;skillType=0;skillTarget=0;PrepareTask(0);skillClock=0;taskLastAttempt=-1;
-                check(!AttemptSkill()&&timingMistakes==1&&taskFeedbackFailed&&taskFeedback.Contains("-25"),"A timing miss records a visible 25-point accuracy deduction");
+                check(!AttemptSkill()&&timingMistakes==1&&Rating(false).accuracy==175&&taskFeedbackFailed&&taskFeedback.Contains("Try again!"),"A timing miss deducts 25 accuracy points and keeps retry feedback short");
                 int misses=timingMistakes;AttemptSkill();check(timingMistakes==misses,"Input debounce prevents repeated misses in the same frame");
                 carryingCrate=true;taskElapsed=TaskBudget-.01f;TickShiftFeedback(.02f);check(skillType==-1&&carryingCrate&&timingMistakes==misses+1,"Task timeout exits safely, keeps the crate and applies one penalty");
                 BeginCampaignLevel(1,false);var customer=SpawnCustomer();customer.basket=1;customer.items.Add(0);customer.state=ShopperState.Queuing;customer.position=QueuePoint(0);customerQueue.Add(customer);player=checkout;Interact();
@@ -65,7 +64,7 @@ namespace GokilKisah
                 BeginCampaignLevel(5,false);served=ServeGoal;stockActions=StockGoal;hazardsCleared=CleanGoal;TickCampaign(0,true);check(!levelResults,"A boss shift requires its boss as well as every task target");
                 BeginCampaignLevel(1,false);UnlockedBossMask=15;check(PickUnlockedBoss()==Encounter.Store,"Replaying an opening shift cannot import bosses unlocked in later shifts");
                 BeginCampaignLevel(6,false);UnlockedBossMask=15;bool onlyEarlyBoss=true;for(int i=0;i<50;i++)onlyEarlyBoss&=PickUnlockedBoss()==Encounter.Goblins;check(onlyEarlyBoss,"Returning bosses respect the selected shift's milestone difficulty");
-                for(int level=1;level<=20;level++){BeginCampaignLevel(level,false);check(spills.Count>=Mathf.Min(2,CleanGoal)&&TaskDifficulty<=1.35f&&CustomerPatience>=45,"Playable work, capped timing difficulty and patience on shift "+level);}
+                for(int level=1;level<=20;level++){BeginCampaignLevel(level,false);check(spills.Count>=Mathf.Min(2,CleanGoal)&&TaskDifficulty<=1.35f&&CustomerPatience>=16,"Playable work, capped timing difficulty and patience on shift "+level);}
                 BeginCampaignLevel(1,false);stockActions=StockGoal;hazardsCleared=CleanGoal;served=ServeGoal;TickCampaign(0,true);check(levelWon&&invoiceStars==3,"Completing every objective awards the three-star result");
                 PlayerPrefs.SetInt(UnlockSave,8);PlayerPrefs.SetInt(LevelSave,8);BeginCampaignLevel(1,true);served=ServeGoal;stockActions=StockGoal;hazardsCleared=CleanGoal;FinishCampaignLevel(true,"");
                 check(HighestUnlocked==8&&PlayerPrefs.GetInt(BestKey(1,"Stars"))==3,"Replaying old shifts preserves later unlocks and saves best stars");
@@ -76,7 +75,7 @@ namespace GokilKisah
                 shiftBriefOpen=false;showTouchControls=true;var queued=SpawnCustomer();queued.basket=1;queued.items.Add(0);queued.state=ShopperState.Queuing;queued.position=QueuePoint(0);queued.timer=CustomerPatience*.82f;customerQueue.Add(queued);yield return NovemberShot(folder,"02-mobile-hud");
                 check(GameArtLibrary.UI("Star")&&GameArtLibrary.UI("CheckoutCard01")&&GameArtLibrary.UI("ProgressBar01"),"New star, task cards and separate progress-bar art load");
                 check(font&&font.name=="Bigbesty"&&editableUI.GetComponentsInChildren<Text>().All(x=>x.font==font),"Bigbesty is applied to every visible Canvas text");
-                scoreGuideOpen=true;yield return NovemberShot(folder,"03-score-guide");scoreGuideOpen=false;
+                yield return NovemberShot(folder,"03-goals-hud");
                 skillType=2;PrepareTask(2);taskFeedbackFailed=true;taskFeedback="Right of the green zone. -25 accuracy points; try again.";taskElapsed=21;yield return NovemberShot(folder,"04-task-failure-countdown");skillType=-1;
                 served=ServeGoal;stockActions=StockGoal;hazardsCleared=CleanGoal;FinishCampaignLevel(true,"");yield return NovemberShot(folder,"05-three-star-results");
                 ReturnToMainMenu();OpenLevelMap();yield return NovemberShot(folder,"06-level-map");

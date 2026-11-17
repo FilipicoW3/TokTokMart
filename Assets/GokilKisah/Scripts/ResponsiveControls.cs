@@ -22,10 +22,7 @@ namespace GokilKisah
         }
         bool InteractionInReach()
         {
-            if(encounter==Encounter.Goblins&&!resolved&&Vector2.Distance(player,phone)<76)return true;
-            if(encounter==Encounter.KKung&&!resolved&&Vector2.Distance(player,lightSwitch)<70)return true;
-            if(encounter==Encounter.Salmah&&!hasGun&&Vector2.Distance(player,nailGun)<70)return true;
-            if(encounter==Encounter.Bo&&!canKicked&&Vector2.Distance(player,can)<70)return true;
+            if(EncounterInteractionInReach())return true;
             return NearestSpill()>=0||Vector2.Distance(player,supply)<75||NearestShelf()>=0||Vector2.Distance(player,checkout)<135;
         }
         void ProcessBufferedAction()

@@ -102,12 +102,11 @@ namespace GokilKisah
             foreach(int level in new[]{1,2,3,4,5})
             {
                 BeginCampaignLevel(level,false);UnlockedBossMask=0;randomFights=2;shiftBriefOpen=false;
-                if(level==5){encounterRollClock=0;TickCampaign(0,true);yield return Go(phone);Interact();while(bossActive&&!levelResults)yield return null;}
+                if(level==5){encounterRollClock=0;TickCampaign(0,true);yield return PlayActiveBoss(Encounter.Goblins);while(bossActive&&!levelResults)yield return null;}
                 int guard=0;
                 while(stockActions<StockGoal&&!levelResults&&guard++<20)
                 {
-                    yield return Go(supply);Interact();int index=0;for(int i=0;i<shelfStock.Length;i++)if(shelfStock[i]<shelfStock[index])index=i;
-                    yield return Go(ShelfPoint(index));Interact();if(skillType>=0)yield return CompleteSkill();
+                    yield return ReplayRestock();
                 }
                 guard=0;while(hazardsCleared<CleanGoal&&!levelResults&&spills.Count>0&&guard++<20){yield return Go(spills[0]);Interact();if(skillType>=0)yield return CompleteSkill();}
                 if(Targets.focus==ShiftFocus.Rush&&!levelResults)

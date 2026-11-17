@@ -62,6 +62,7 @@ namespace GokilKisah
                 if(arg.StartsWith("--customer-output=")) BeginCustomerCapture(arg.Substring(18));
                 if(arg.StartsWith("--ui-output=")) BeginPresentationCapture(arg.Substring(12));
                 if(arg.StartsWith("--release-verify="))BeginReleaseVerification(arg.Substring(17));
+                if(arg.StartsWith("--gameplay-refresh-verify="))BeginGameplayRefreshVerification(arg.Substring(26));
             }
         }
         void OnEnable()
@@ -84,6 +85,7 @@ namespace GokilKisah
         {
             if(campaignActive){tuning.rayWait=5;tuning.boDeadline=18;tuning.nailHits=3;}
             shiftBriefOpen=false;
+            ResetSpillLifecycle();
             campaignActive=false;levelResults=false;bossActive=false;mandatoryBossPending=false;
             ResetStamina();cameraInitialized=false; priceEntry=""; taskCombo=0; skillType=-1; playerVelocity=Vector2.zero; touchHeld=false; touchMove=Vector2.zero;
             encounter=next; player=new Vector2(760,710); helper=new Vector2(1135,365); gameOver=false; resolved=false;
@@ -96,15 +98,15 @@ namespace GokilKisah
             int newSwitch=UnityEngine.Random.Range(0,switches.Length-1); if(newSwitch>=switchIndex) newSwitch++; switchIndex=newSwitch; lightSwitch=switches[newSwitch];
             int newCan=UnityEngine.Random.Range(0,cans.Length-1); if(newCan>=canIndex) newCan++; canIndex=newCan; can=cans[newCan];
             ResetSceneState();
-            ResetCustomers();
+            ResetCustomers();ResetActiveEncounter(next);
             aiGoal=supply; aiStatus="Restocking shelves";
             switch(next)
             {
                 case Encounter.Store: SetStep("01 / COLLECT A CRATE","Go to the stockroom, restock a shelf, scan a checkout and clear a spill."); break;
-                case Encounter.Goblins: SetStep("01 / GOBLINS MAKE A MESS","Reach the phone and call Uncle Ray. Keep the store running while he travels."); break;
-                case Encounter.KKung: SetStep("01 / POSSESSED IDOLS ARRIVE","Find the scattered switch. Fluorescent lights make K-Kung disappear."); break;
-                case Encounter.Salmah: SetStep("01 / MISS SALMAH ATTACKS","Collect the nail gun. Position behind her for automatic shots."); break;
-                case Encounter.Bo: SetStep("01 / BO AIMS IKAN IBLIS","Find the scattered poo-filled can and kick it at Bo before the countdown expires."); break;
+                case Encounter.Goblins: SetStep("01 / GOBLINS MAKE A MESS","Call Uncle Ray, then shoo goblins to stun them for his punches."); break;
+                case Encounter.KKung: SetStep("01 / POSSESSED IDOLS ARRIVE","Restore three circuits and dodge the marked attacks."); break;
+                case Encounter.Salmah: SetStep("01 / MISS SALMAH ATTACKS","Collect the nail gun. Dodge her rush, flank her and tap Interact to shoot."); break;
+                case Encounter.Bo: SetStep("01 / BO AIMS IKAN IBLIS","Find and return three cans before each countdown expires."); break;
             }
         }
         public void SetStep(string title,string body) { stepTitle=title; stepBody=body; }
@@ -136,36 +138,14 @@ namespace GokilKisah
             if(skillType>=0) skillClock+=dt;
             if(!testing) { UpdateCustomers(dt); UpdateAI(dt); }
             UpdateEncounter(dt);
-            if(canFlying) { flyingCan=Vector2.MoveTowards(flyingCan,ShopLayout.ToGame(shop.boCarTarget.position),680*dt); if(Vector2.Distance(flyingCan,ShopLayout.ToGame(shop.boCarTarget.position))<8) { PlaySound("Impact");canFlying=false; resolved=true; SetStep("03 / BO IS STOPPED","The kicked Ikan Iblis hits his car. The store avoids instant game over."); } }
+            if(canFlying) { flyingCan=Vector2.MoveTowards(flyingCan,ShopLayout.ToGame(shop.boCarTarget.position),680*dt); if(Vector2.Distance(flyingCan,ShopLayout.ToGame(shop.boCarTarget.position))<8)FinishBoReturn(); }
             TrackArtistMotion();
-            TickCampaign(dt);
+            TickCampaign(dt,gameplayShiftPlaytest);
         }
         void UpdateEncounter(float dt)
         {
             customerHit=Mathf.Max(0,customerHit-dt);
-            if(resolved) return;
-            if(encounter==Encounter.Goblins)
-            {
-                nextMess-=dt;
-                if(nextMess<=0){nextMess=campaignActive?Mathf.Max(1.5f,4-CurrentLevel*.07f):4;if(spills.Count<7){var mess=ShopLayout.ToGame(shop.goblinSpawns[spills.Count%shop.goblinSpawns.Length].position)+new Vector2(0,35);if(Walkable(mess))spills.Add(mess);}}
-            }
-            if(encounter==Encounter.Goblins)
-            {
-                chaos=Mathf.Min(100,chaos+dt*2.5f);
-                if(rayCalled) { rayRemaining=Mathf.Max(0,rayRemaining-dt); if(rayRemaining<=1.5f) rayX=Mathf.MoveTowards(rayX,ShopLayout.ToGame(shop.rayDestination.position).x,700*dt); if(rayRemaining<=0) { PlaySound("Success");goblins=0; resolved=true; SetStep("03 / UNCLE RAY PICKS THEM UP","The goblins leave with Uncle Ray. Their mess still needs clearing."); Toast("Goblins collected by Uncle Ray"); } }
-            }
-            if(encounter==Encounter.KKung) chaos=Mathf.Min(100,chaos+dt*2.5f);
-            if(encounter==Encounter.Salmah)
-            {
-                chaos=Mathf.Min(100,chaos+dt*3); nailCooldown-=dt;
-                nextAttack-=dt;if(nextAttack<=0){nextAttack=1.4f; ScareCustomer();}
-                if(hasGun && CanHitSalmah() && nailCooldown<=0) { PlaySound("Shot");nailsHit++; nailCooldown=.75f; if(nailsHit>=tuning.nailHits) { resolved=true; SetStep("03 / REAR ATTACK SUCCEEDS","Automatic nail-gun hits from behind stop Miss Salmah and protect customers."); Toast("Miss Salmah stopped"); } }
-            }
-            if(encounter==Encounter.Bo && !canKicked)
-            {
-                boRemaining=Mathf.Max(0,boRemaining-dt);
-                if(boRemaining<=0) { PlaySound("Miss");gameOver=true; SetStep("BO THROWS THE CAN / GAME OVER","The timer expired. This encounter is an instant loss in the GDD."); }
-            }
+            TickActiveEncounter(dt);
         }
         public bool CanHitSalmah() { Vector2 d=player-salmah; return d.magnitude<=tuning.nailRange && d.magnitude>2 && Vector2.Dot(d.normalized,salmahFacing)<-.45f; }
         const float FootRadius=12;
@@ -198,7 +178,7 @@ namespace GokilKisah
             if(shelves.Count==0){aiStatus="Waiting for shelves";return;}
             // Keep the player's stocking work available. The partner covers checkout first,
             // then resumes the normal stock/serve loop once the restock target is complete.
-            if(campaignActive&&stockActions<StockGoal&&aiPhase!=2)
+            if((campaignActive&&stockActions<StockGoal||ActiveFight||customerQueue.Count>=2)&&aiPhase!=2)
             {aiPhase=2;aiWork=0;aiWait=0;aiStatus="Covering checkout while you restock";}
             if(aiWait>0) { aiWait-=dt; return; }
             aiGoal=aiPhase==0?supply:aiPhase==1?ShelfPoint(Mathf.Clamp(aiShelf,0,shelves.Count-1)):ShopLayout.ToGame(shop.partnerCheckoutSpot.position);
@@ -209,8 +189,8 @@ namespace GokilKisah
             else
             {
                 if(skillType!=1&&CustomerAtRegister()!=null)ServeCustomer();
-                if(campaignActive&&stockActions<StockGoal)
-                {aiPhase=2;aiStatus="Covering checkout while you restock";aiWait=.6f;}
+                if(campaignActive&&stockActions<StockGoal||ActiveFight||customerQueue.Count>=2)
+                {aiPhase=2;aiStatus=ActiveFight?"Covering checkout during the fight":"Covering checkout while you restock";aiWait=.6f;}
                 else {aiPhase=0;aiGoal=supply;aiStatus="Collecting stockroom crate";aiWait=2;}
             }
         }
@@ -230,10 +210,7 @@ namespace GokilKisah
         {
             if(!selected||gameOver||levelResults||settingsOpen||autoPaused||shiftBriefOpen||scoreGuideOpen||replay && demoRoutine==null)return;
             if(skillType>=0) { AttemptSkill();return; }
-            if(encounter==Encounter.Goblins&&!resolved&&Vector2.Distance(player,phone)<76) { if(!rayCalled) { PlaySound("Call");rayCalled=true;rayRemaining=tuning.rayWait;SetStep("02 / CALL MADE / WAIT FOR RAY","Uncle Ray is on his way. Continue tasks while goblins cause trouble."); } return; }
-            if(encounter==Encounter.KKung&&!resolved&&Vector2.Distance(player,lightSwitch)<70) { PlaySound("Switch");lightsOn=true;resolved=true;SetStep("03 / FLUORESCENT LIGHTS ON","K-Kung disappears. Next encounter places the switch at a different location.");return; }
-            if(encounter==Encounter.Salmah&&!hasGun&&Vector2.Distance(player,nailGun)<70) { PlaySound("Pickup");hasGun=true;SetStep("02 / GET BEHIND MISS SALMAH","The gun fires automatically only in range and behind her facing direction.");return; }
-            if(encounter==Encounter.Bo&&!canKicked&&Vector2.Distance(player,can)<70) { PlaySound("Kick");canKicked=true;canFlying=true;flyingCan=can;SetStep("02 / KICK THE POO-FILLED CAN","The found Ikan Iblis flies toward Bo's car before he can throw his can.");return; }
+            if(TryEncounterInteraction())return;
             int spillIndex=NearestSpill();
             if(spillIndex>=0){BeginSkill(2,spillIndex);return;}
             if(Vector2.Distance(player,supply)<75) { PlaySound("Pickup");carryingCrate=true;SetStep("02 / RESTOCK WITH A SKILL CHECK","Bring the crate to an empty shelf. Press ACTION when the marker enters the green zone.");Toast("Stock crate collected");return; }
@@ -242,7 +219,7 @@ namespace GokilKisah
             if(Vector2.Distance(player,checkout)<135) {if(CustomerAtRegister()!=null)BeginSkill(1,CustomerAtRegister().id);else Toast("Wait for a shopper to reach the checkout.");return;}
             Toast("Move closer to a highlighted station");
         }
-        void BeginSkill(int type,int target) {PrepareTask(type);PlaySound("Click");playerVelocity=Vector2.zero;skillType=type;skillTarget=target;skillClock=0;skillScans=0;taskElapsed=0;taskLastAttempt=-1;taskFeedbackFailed=false;}
+        void BeginSkill(int type,int target) {if(type==2)CaptureMopTarget(target);else mopTargetView=null;PrepareTask(type);PlaySound("Click");playerVelocity=Vector2.zero;skillType=type;skillTarget=target;skillClock=0;skillScans=0;taskElapsed=0;taskLastAttempt=-1;taskFeedbackFailed=false;}
         float SkillMarker() {return Mathf.PingPong(skillClock*(skillType==2?.75f+.08f*taskCombo:.65f+.09f*taskCombo)*TaskDifficulty,1);}
         float SkillZoneCenter()=>skillType==0?.5f:taskCombo%2==0?.35f:.65f;
         float SkillZoneHalf()=>Mathf.Max(.07f,Mathf.Max(.11f,.18f-taskCombo*.025f)/TaskDifficulty);
@@ -254,7 +231,7 @@ namespace GokilKisah
             PlaySound(skillType==1?"Scan":skillType==2?"Mop":"Stock");
             taskFeedbackFailed=false;taskCombo++;skillScans=taskCombo;taskFeedback="Nice! "+taskCombo+" / "+(skillType==0?3:4);if(taskCombo<(skillType==0?3:4)){skillClock=0;return true;}
             if(skillType==0){shelfStock[skillTarget]=ShelfCapacity(skillTarget);carryingCrate=false;stockActions++;SetStep("03 / CHECKOUT / ENTER THE TOTAL","Move to checkout. Add up the receipt and enter the total on the keypad.");}
-            else{if(ClearSpill(skillTarget))hazardsCleared++;SetStep("05 / STORE LOOP COMPLETE","Crate, stocking, checkout and hazard clearing demonstrated. The AI partner keeps working.");}
+            else{if(FinishMopPatch())hazardsCleared++;SetStep("05 / STORE LOOP COMPLETE","Crate, stocking, checkout and hazard clearing demonstrated. The AI partner keeps working.");}
             skillType=-1;chaos=Mathf.Max(0,chaos-(campaignActive&&Targets.focus==ShiftFocus.Chaos?12:6));Toast("Task complete!");MobileHaptics.Pulse(35);EnsureShiftCleanupWork();return true;
         }
         int TotalStock(){int total=0;foreach(int n in shelfStock)total+=n;return total;}
@@ -291,10 +268,7 @@ namespace GokilKisah
                 Interact();yield return CompleteSkill();
                 yield return Go(spills[0]);Interact();yield return CompleteSkill();
             }
-            else if(next==Encounter.Goblins){yield return Go(phone+new Vector2(65,0));Interact();while(!resolved)yield return null;yield return new WaitForSeconds(.8f);}
-            else if(next==Encounter.KKung){SetStep("02 / FIND THE SCATTERED SWITCH","The switch moves every encounter. Search the shop walls, then activate it.");Vector2 approach=lightSwitch;if(approach.y<235)approach.y+=55;else if(approach.x<400)approach.x+=55;else if(approach.x>1250)approach.x-=55;yield return Go(approach);Interact();}
-            else if(next==Encounter.Salmah){yield return Go(nailGun+new Vector2(0,45));Interact();yield return Go(new Vector2(1210,575));while(!resolved)yield return null;}
-            else {yield return Go(can);Interact();while(!resolved&&!gameOver)yield return null;}
+            else yield return PlayActiveBoss(next);
             yield return new WaitForSeconds(2.4f);replay=false;demoRoutine=null;
         }
         public void BeginCapture(string directory) {captureDirectory=directory;StartCoroutine(CaptureAll());}

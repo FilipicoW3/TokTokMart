@@ -29,6 +29,12 @@ namespace GokilKisah.Editor
             {
                 switch(command.action)
                 {
+                    case "spillrepro":GameplayRefreshTools.ReproduceSpills(command.path);ReplyTo(command.action,"Spill reproduction recorded");break;
+                    case "cleantestevents":GameplayRefreshTools.CleanTemporaryEventSystems(command.path);ReplyTo(command.action,"Temporary UI event systems checked");break;
+                    case "gameplayrefreshverify":RequireGame().BeginGameplayRefreshVerification(command.path);ReplyTo(command.action,"Spill, progression and active-boss checks started");break;
+                    case "gameplayrefreshplaytest":RequireGame().BeginGameplayRefreshPlaytest(command.path);ReplyTo(command.action,"Active boss and shift playthroughs started");break;
+                    case "gameplayrefreshshifts":RequireGame().BeginGameplayRefreshShiftPlaytest(command.path);ReplyTo(command.action,"Longer shift workload playthroughs started");break;
+                    case "gameplayrefreshui":GameplayRefreshTools.PrepareEncounterUI();ReplyTo(command.action,"Encounter HUD spacing saved");break;
                     case "friendui":FriendUIIntegration.Apply();ReplyTo(command.action,"PR artwork imported; authored UI update started");break;
                     case "frienduiverify":FriendUIIntegration.Verify(command.path);ReplyTo(command.action,"PR UI binding verification complete");break;
                     case "releaseart":ReleasePolishTools.ImportArt(command.path);ReplyTo(command.action,"Release artwork imported");break;
