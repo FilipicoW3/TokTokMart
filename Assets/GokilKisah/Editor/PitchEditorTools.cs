@@ -29,6 +29,8 @@ namespace GokilKisah.Editor
             {
                 switch(command.action)
                 {
+                    case "friendui":FriendUIIntegration.Apply();ReplyTo(command.action,"PR artwork imported; authored UI update started");break;
+                    case "frienduiverify":FriendUIIntegration.Verify(command.path);ReplyTo(command.action,"PR UI binding verification complete");break;
                     case "releaseart":ReleasePolishTools.ImportArt(command.path);ReplyTo(command.action,"Release artwork imported");break;
                     case "releaseui":ReleasePolishTools.PrepareUI();ReplyTo(command.action,"Targeted Canvas authoring started");break;
                     case "releaseverify":RequireGame().BeginReleaseVerification(command.path);ReplyTo(command.action,"Release regression started");break;

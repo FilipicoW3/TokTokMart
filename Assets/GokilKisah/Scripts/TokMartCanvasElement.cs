@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 namespace GokilKisah
 {
     [DisallowMultipleComponent]
@@ -31,9 +32,15 @@ namespace GokilKisah
         void BeginData(){if(liveData)return;liveData=true;lastText=originalText;lastColor=originalColor;lastSize=originalFontSize;lastTextureName=sourceTextureName;lastUV=originalUV;}
         public void SetText(string value,Color color,int size)
         {
-            var t=GetComponent<Text>();if(!hasData){originalText=value;originalColor=color;originalFontSize=size;hasData=true;t.text=value;t.color=TokMartCanvas.GuiColor(color);t.fontSize=size;}
+            var t=GetComponent<Text>();var tmp=t?null:GetComponent<TMP_Text>();if(!t&&!tmp)return;
+            if(!hasData){originalText=value;originalColor=color;originalFontSize=size;hasData=true;if(t){t.text=value;t.color=TokMartCanvas.GuiColor(color);t.fontSize=size;}else{tmp.text=value;tmp.color=TokMartCanvas.GuiColor(color);tmp.fontSize=size;}}
             BeginData();
-            if(bindGameData){if(value!=originalText)t.text=value;else if(lastText!=null&&lastText!=originalText)t.text=originalText;if(color!=originalColor||lastColor!=originalColor)t.color=TokMartCanvas.GuiColor(color);if(size!=originalFontSize||lastSize!=originalFontSize)t.fontSize=size;}
+            if(bindGameData)
+            {
+                if(value!=originalText||lastText!=null&&lastText!=originalText){if(t)t.text=value;else tmp.text=value;}
+                if(color!=originalColor||lastColor!=originalColor){if(t)t.color=TokMartCanvas.GuiColor(color);else tmp.color=TokMartCanvas.GuiColor(color);}
+                if(size!=originalFontSize||lastSize!=originalFontSize){if(t)t.fontSize=size;else tmp.fontSize=size;}
+            }
             lastText=value;lastColor=color;lastSize=size;
         }
         string lastText,lastTextureName;Rect lastUV;Color lastColor;int lastSize;
@@ -54,6 +61,7 @@ namespace GokilKisah
             if(resetLayout&&hasLayout){var r=GetComponent<RectTransform>();r.anchoredPosition=new Vector2(originalRect.x,-originalRect.y);r.sizeDelta=originalRect.size;}
             if(!hasData)return;
             var text=GetComponent<Text>();if(text){text.text=originalText;text.color=TokMartCanvas.GuiColor(originalColor);text.fontSize=originalFontSize;}
+            var tmp=GetComponent<TMP_Text>();if(tmp){tmp.text=originalText;tmp.color=TokMartCanvas.GuiColor(originalColor);tmp.fontSize=originalFontSize;}
             var raw=GetComponent<RawImage>();if(raw){raw.texture=originalTexture;raw.uvRect=originalUV;raw.color=TokMartCanvas.GuiColor(originalColor);}
             var image=GetComponent<Image>();if(image&&kind=="Panel")image.color=TokMartCanvas.GuiColor(originalColor);
         }

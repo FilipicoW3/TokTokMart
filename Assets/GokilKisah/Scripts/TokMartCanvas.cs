@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
+using TMPro;
 
 namespace GokilKisah
 {
@@ -85,8 +86,10 @@ namespace GokilKisah
         public void Label(Rect rect,string value,GUIStyle style,Matrix4x4 matrix)
         {
             var e=Visual("Label","Text: "+(value??"").Replace('\n',' '),"Text",rect,matrix);
-            if(!e)return;var t=e.GetComponent<Text>();if(!t&&!CanAuthor){ReportMissing(e.key+"/Text");return;}if(!t){t=e.gameObject.AddComponent<Text>();t.raycastTarget=false;t.font=style.font;t.fontSize=style.fontSize;t.alignment=style.alignment;t.horizontalOverflow=style.wordWrap?HorizontalWrapMode.Wrap:HorizontalWrapMode.Overflow;t.verticalOverflow=VerticalWrapMode.Overflow;t.supportRichText=false;}
-            if(CanAuthor&&t.font!=style.font)t.font=style.font;
+            if(!e)return;var t=e.GetComponent<Text>();var tmp=t?null:e.GetComponent<TMP_Text>();
+            if(!t&&!tmp&&!CanAuthor){ReportMissing(e.key+"/Text or TMP_Text");return;}
+            if(!t&&!tmp){t=e.gameObject.AddComponent<Text>();t.raycastTarget=false;t.font=style.font;t.fontSize=style.fontSize;t.alignment=style.alignment;t.horizontalOverflow=style.wordWrap?HorizontalWrapMode.Wrap:HorizontalWrapMode.Overflow;t.verticalOverflow=VerticalWrapMode.Overflow;t.supportRichText=false;}
+            if(t&&CanAuthor&&t.font!=style.font)t.font=style.font;
             int scaledSize=Mathf.RoundToInt(style.fontSize*(sourceMatrix.inverse*matrix).GetColumn(0).magnitude);
             e.SetText(value,style.normal.textColor,scaledSize);
         }

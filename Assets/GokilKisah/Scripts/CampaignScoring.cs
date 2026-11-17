@@ -67,8 +67,9 @@ namespace GokilKisah
             Shade();Sticker(new Rect(305,166,990,566),arcadeCream,true,5);
             ArcadeText(new Rect(340,187,920,65),"SHIFT "+CurrentLevel.ToString("00")+"  /  "+Targets.Title,42,arcadeNavy,TextAnchor.MiddleCenter);
             Text(new Rect(370,271,860,58),Targets.Hint,25,arcadeTeal,FontStyle.Bold,TextAnchor.MiddleCenter);
-            int[] goal={ServeGoal,StockGoal,CleanGoal};string[] labels={"SERVE","RESTOCK","CLEAN"};string[] icons={"CheckoutIcon01","stock","PuddleIcon01"};
-            for(int i=0;i<3;i++){var r=new Rect(370+i*295,355,270,135);Panel(r,new Color(.90f,.91f,.83f));if(i==1)Icon(new Rect(r.x+20,r.y+25,64,64),"stock",arcadeTeal);else ArtImage(new Rect(r.x+20,r.y+25,64,64),icons[i]);ArcadeText(new Rect(r.x+99,r.y+12,150,55),goal[i].ToString(),42,arcadeNavy,TextAnchor.MiddleCenter);ArcadeText(new Rect(r.x+90,r.y+74,165,35),labels[i],25,arcadeTeal,TextAnchor.MiddleCenter);}
+            int[] goal={ServeGoal,StockGoal,CleanGoal};string[] labels={"SERVE","RESTOCK","CLEAN"};string[] icons={"CheckoutIcon01","StockIcon01","PuddleIcon01"};
+            for(int i=0;i<3;i++){var r=new Rect(370+i*295,355,270,135);Panel(r,new Color(.90f,.91f,.83f));ArtImage(new Rect(r.x+20,r.y+25,64,64),icons[i]);ArcadeText(new Rect(r.x+99,r.y+12,150,55),goal[i].ToString(),42,arcadeNavy,TextAnchor.MiddleCenter);ArcadeText(new Rect(r.x+90,r.y+74,165,35),labels[i],25,arcadeTeal,TextAnchor.MiddleCenter);}
+            ArtImage(new Rect(397,523,42,42),"TimerIcon01",uiKey:"ClosingTimerIcon");
             Text(new Rect(370,524,860,42),"CLOSING IN "+ClockText(ShiftBudget)+(mandatoryBossPending?"  /  BOSS: "+scenarioTitles[(int)MilestoneBoss(CurrentLevel)]:"  /  QUICK, ACCURATE, TIDY!"),23,arcadeNavy,FontStyle.Bold,TextAnchor.MiddleCenter);
             if(UiButton(new Rect(520,617,560,70),"LET'S OPEN!",arcadeGold,32))StartBriefedShift();
         }}
@@ -112,7 +113,7 @@ namespace GokilKisah
         {using(NativeUiScope("TaskDrive","Task progress and icon")){
             var r=new Rect(412,351,36,74);ArtImage(r,"ProgressBar01");
             float progress=(float)taskCombo/(skillType==0?3:4);Fill(new Rect(r.x+5,r.yMax-6-(r.height-12)*progress,r.width-10,(r.height-12)*progress),new Color(.41f,.86f,.18f));
-            ArtImage(new Rect(r.x+7,r.y+23,22,28),skillType==0?"CheckoutIcon01":"PuddleIcon01");
+            ArtImage(new Rect(r.x+7,r.y+23,22,28),skillType==0?"StockIcon01":"PuddleIcon01");
         }}
         void HudCard(Rect r,string art,string label,int done,int goal)
         {using(NativeUiScope(label,"Task card "+label)){
@@ -129,7 +130,7 @@ namespace GokilKisah
             HudCard(new Rect(125,135,76,123),"PuddleCard01","CLEAN",hazardsCleared,CleanGoal);
             ArtImage(new Rect(223,135,76,95),"HazardCard01");Fill(new Rect(232,211,58*Mathf.Clamp01(chaos/100),9),chaos>60?arcadeCoral:arcadeGold);
             ArcadeText(new Rect(210,234,102,24),"CHAOS "+Mathf.RoundToInt(chaos)+"%",14,arcadeCream,TextAnchor.MiddleCenter,true);
-            Panel(new Rect(26,274,282,50),arcadeCream);Icon(new Rect(34,282,33,33),"stock",arcadeTeal);ArcadeText(new Rect(76,279,225,37),"RESTOCK "+stockActions+" / "+StockGoal,20,arcadeNavy);
+            Panel(new Rect(26,274,282,50),arcadeCream);ArtImage(new Rect(34,282,33,33),"StockIcon01");ArcadeText(new Rect(76,279,225,37),"RESTOCK "+stockActions+" / "+StockGoal,20,arcadeNavy);
             GoalProgress(new Rect(34,316,266,4),stockActions,StockGoal);
             GUI.matrix=HudMatrix(canvas,new Vector2(1573,24));
             ArtImage(new Rect(1280,26,215,65),"CustomerCount01");ArcadeText(new Rect(1335,36,150,42),served+" / "+ServeGoal,25,arcadeNavy,TextAnchor.MiddleCenter);
